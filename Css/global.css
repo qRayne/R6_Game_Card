@@ -46,9 +46,9 @@ form {
 .form-style-6 input[type="url"]:focus,
 .form-style-6 textarea:focus,
 .form-style-6 select:focus {
-    box-shadow: 0 0 5px #9896f1;
+    box-shadow: 0 0 5px #40E0D0;
     padding: 3%;
-    border: 1px solid #9896f1;
+    border: 1px solid #40E0D0;
 }
 
 .form-style-6 input[type="submit"],
@@ -58,8 +58,8 @@ form {
     -moz-box-sizing: border-box;
     width: 100%;
     padding: 3%;
-    background: #9896f1;
-    border-bottom: 2px solid #9896f1;
+    background: #40E0D0;
+    border-bottom: 2px solid #40E0D0;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;
@@ -68,5 +68,9 @@ form {
 
 .form-style-6 input[type="submit"]:hover,
 .form-style-6 input[type="button"]:hover {
-    background: #9896f1;
+    background: #40E0D0;
+}
+
+.form-style-6 input[type="submit"]{
+    font-size: 15px;
 }

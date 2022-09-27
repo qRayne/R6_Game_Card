@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="Css/global.css">
 </head>
 
-<body style="background-image: url('images/background.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+<body style="background-image: url('images/background3.png'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
 
     <div class="form-style-6">
         <form action=login.html method="post">

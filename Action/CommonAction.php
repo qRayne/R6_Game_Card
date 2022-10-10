@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
 abstract class CommonAction
 {
@@ -20,6 +21,7 @@ abstract class CommonAction
             if ($_GET["action"] === "logout") {
                 session_unset();
                 session_destroy();
+                session_start();
             }
         }
 

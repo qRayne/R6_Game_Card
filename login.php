@@ -17,10 +17,10 @@
     <link rel="stylesheet" href="Css/global.css">
 </head>
 
-<body class="background" style="background-image: url('images/nokk.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+<body class="background">
 
     <div class="form-style-6">
-        <form action=login.php method="post">
+        <form class="loginForm" action=login.php method="post">
             <?php
                 if (!empty($data["message"])){
                     ?>
@@ -37,10 +37,11 @@
     <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Agents</button>
         <div id="myDropdown" class="dropdown-content">
-            <a onclick="Background_nokk()" >Nokk</a>
-            <a onclick="Background_lion()" >Lion</a>
-            <a onclick="Background_buck()">Buck</a>
-            <a onclick="Background_maverick()">Maverick</a>
+            <a id="nokk">Nokk</a>
+            <a id="lion">Lion</a>
+            <a id="buck">Buck</a>
+            <a id="maverick">Maverick</a>
+            <a id="jager">Jager</a>
         </div>
     </div>
 

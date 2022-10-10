@@ -11,7 +11,21 @@
     
         protected function executeAction()
         {
-            $key = file_get_contents("data/key.txt"); // je recupère la ligne au complet (une seule ligne sur le fichier)
-            return compact("key");
+            if(isset($_POST["btnPlay"])){
+                header("location:game.php"); // si l'utilisateur click sur play
+                exit;
+            }
+            else if ($_POST["btnDeck"]){
+                header("location:deck.php");
+                exit;
+            }
+            else{
+                header("location:login.php");
+                exit;
+            }
+
+            // retourne la clee avec l'url.
+            $urlwithKey = $_SESSION["urlwithKey"];
+            return compact("urlwithKey");
         }
     }

@@ -19,9 +19,16 @@ $data = $action->execute();
 </head>
 
 <body class="background" style="background-image: url('images/background_chat.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
-    <center><iframe style="width:700px;height:275px;margin-top:30%;border:2px solid #40E0D0;" onload="applyStyles(this)" <?= $data["key"] ?> </iframe></center>
-    <input style="margin:10px;"type="submit" name="buttonPlay" value="PLAY"/>
-    <input type="submit" name="buttonQuit" value="QUIT"/>
+    <div class="form-style-4">
+        <form action="chat.php" method="POST">
+            <input type="submit" name="btnPlay" value="PLAY">
+            <input type="submit" name="btnQuit" value="QUIT">
+            <input type="submit" name="btnDeck" value="DECK">
+        </form>
+    </div>
+    <div class="iframe">
+        <center><iframe style="width:700px;height:275px;margin-top:10%;border:2px solid #40E0D0;" onload="applyStyles(this)" <?= $data["urlwithKey"] ?> </iframe></center>
+    </div>
 </body>
 
 </html>

@@ -15,19 +15,17 @@ window.onclick = function(event) {
     }
 }
 
-// mon code :
-function Background_nokk() {
-    document.querySelector(".background").style.backgroundImage = "url('images/nokk.jpg')";
-}
+// mon code
+document.querySelectorAll('a').forEach(lien => {
+    lien.addEventListener('click', (e) => {});
+});
 
-function Background_lion() {
-    document.querySelector(".background").style.backgroundImage = "url('images/lion.jpg')";
-}
+document.addEventListener('click', (e) => {
+    // recupère le nom de l'agent
+    let elementId = e.target.id;
 
-function Background_buck() {
-    document.querySelector(".background").style.backgroundImage = "url('images/buck.jpg')";
-}
-
-function Background_maverick() {
-    document.querySelector(".background").style.backgroundImage = "url('images/maverick.jpg')";
-}
+    if (elementId != '') {
+        let stringUrl = "url('images/" + elementId + ".jpg')";
+        document.querySelector(".background").style.backgroundImage = stringUrl;
+    }
+});

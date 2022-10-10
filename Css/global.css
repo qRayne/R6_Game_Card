@@ -3,10 +3,17 @@
     margin: 0;
 }
 
-form {
+.loginForm {
     display: table;
     margin: 0 auto;
     padding-top: 50vh;
+}
+
+.background {
+    background-image: url('../images/nokk.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .dropbtn {
@@ -111,6 +118,23 @@ form {
     border-right-style: none;
     border-left-style: none;
     color: #fff;
+}
+
+.form-style-4 input[type="submit"],
+.form-style-4 input[type="button"] {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 15%;
+    padding: 3%;
+    background: #40E0D0;
+    border-bottom: 2px solid #40E0D0;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+    margin-top: 20vh;
+    margin-left: 27.5vh;
 }
 
 .form-style-6 input[type="submit"]:hover,

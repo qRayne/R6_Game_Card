@@ -30,8 +30,8 @@ class LoginAction extends CommonAction
                 // Pour voir les informations retournées : var_dump($result);exit;
                 $key = $result->key;
                 $sentence = "src=https://magix.apps-de-cours.com/server/#/chat/" . "$key";
-                file_put_contents("data/key.txt",""); // vide le fichier
-                file_put_contents("data/key.txt",$sentence,FILE_APPEND); // ajoute la dernière clee generer
+                $_SESSION["urlwithKey"] = $sentence; // on met le src dans une variable de session
+                $_SESSION["keyOnly"] = $key; // on met uniquement la clee
                 header("location:chat.php");
                 exit;
             }

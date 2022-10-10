@@ -50,6 +50,12 @@ form {
     display: block;
 }
 
+.error-message {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #40E0D0;
+}
+
 .form-style-6 input[type="text"],
 .form-style-6 input[type="date"],
 .form-style-6 input[type="datetime"],

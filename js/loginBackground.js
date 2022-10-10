@@ -17,18 +17,17 @@ window.onclick = function(event) {
 
 // mon code :
 function Background_nokk() {
-    document.querySelector(".background").style.backgroundImage = "url('nokk.jpg')";
-    //document.body.style.backgroundImage = "url('lion.jpg')";
+    document.querySelector(".background").style.backgroundImage = "url('images/nokk.jpg')";
 }
 
 function Background_lion() {
-    document.querySelector(".background").style.backgroundImage = "url('lion.jpg')";
+    document.querySelector(".background").style.backgroundImage = "url('images/lion.jpg')";
 }
 
 function Background_buck() {
-    document.querySelector(".background").style.backgroundImage = "url('buck.jpg')";
+    document.querySelector(".background").style.backgroundImage = "url('images/buck.jpg')";
 }
 
 function Background_maverick() {
-    document.querySelector(".background").style.backgroundImage = "url('maverick.jpg')";
+    document.querySelector(".background").style.backgroundImage = "url('images/maverick.jpg')";
 }

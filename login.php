@@ -20,7 +20,7 @@
 <body class="background">
 
     <div class="form-style-6">
-        <form class="loginForm" action=login.php method="post">
+        <form class="loginForm" action="" method="post">
             <?php
                 if (!empty($data["message"])){
                     ?>
@@ -41,7 +41,8 @@
             <a id="lion">Lion</a>
             <a id="buck">Buck</a>
             <a id="maverick">Maverick</a>
-            <a id="jager">Jager</a>
+            <a id="vigil">Vigil</a>
+            <a id="smoke">Smoke</a>
         </div>
     </div>
 

@@ -15,7 +15,7 @@ class LoginAction extends CommonAction
         // $data["username"] = "Rayane";
         // $data["password"] = "Ry09112002";
 
-        if (!empty($_POST["username"]) && !empty($_POST["password"])){
+        if (isset($_POST["username"]) && isset($_POST["password"])){
             $data = [];
             $data["username"] = $_POST["username"];
             $data["password"] = $_POST["password"];

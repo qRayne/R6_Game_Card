@@ -120,6 +120,15 @@
     color: #fff;
 }
 
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover {
+    background: #40E0D0;
+}
+
+.form-style-6 input[type="submit"] {
+    font-size: 15px;
+}
+
 .form-style-4 input[type="submit"],
 .form-style-4 input[type="button"] {
     box-sizing: border-box;
@@ -133,15 +142,6 @@
     border-right-style: none;
     border-left-style: none;
     color: #fff;
-    margin-top: 20vh;
+    margin-top: 30vh;
     margin-left: 27.5vh;
-}
-
-.form-style-6 input[type="submit"]:hover,
-.form-style-6 input[type="button"]:hover {
-    background: #40E0D0;
-}
-
-.form-style-6 input[type="submit"] {
-    font-size: 15px;
 }

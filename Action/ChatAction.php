@@ -15,11 +15,11 @@
                 header("location:game.php"); // si l'utilisateur click sur play
                 exit;
             }
-            else if ($_POST["btnDeck"]){
+            else if (isset($_POST["btnDeck"])){
                 header("location:deck.php");
                 exit;
             }
-            else{
+            else if (isset($_POST["btnQuit"])){
                 header("location:login.php");
                 exit;
             }

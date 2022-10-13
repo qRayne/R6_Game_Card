@@ -41,7 +41,7 @@
             <a id="lion">Lion</a>
             <a id="buck">Buck</a>
             <a id="maverick">Maverick</a>
-            <a id="vigil">Vigil</a>
+            <a id="vigil">Vigil</a>     
             <a id="smoke">Smoke</a>
         </div>
     </div>

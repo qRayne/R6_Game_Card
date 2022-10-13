@@ -13,7 +13,7 @@ $data = $action->execute();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/loginBackground.js"></script>
-    <title>Chat</title>
+    <title>Game</title>
     <link rel="stylesheet" href="Css/global.css">
     <script src="js/chatStyle.js"></script>
 </head>

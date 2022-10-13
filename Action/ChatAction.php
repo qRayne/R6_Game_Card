@@ -12,7 +12,7 @@
         protected function executeAction()
         {
             if(isset($_POST["btnPlay"])){
-                header("location:game.php"); // si l'utilisateur click sur play
+                header("location:lobby.php"); // si l'utilisateur click sur play
                 exit;
             }
             else if (isset($_POST["btnDeck"])){
@@ -20,8 +20,20 @@
                 exit;
             }
             else if (isset($_POST["btnQuit"])){
-                header("location:login.php");
-                exit;
+                // L'utilisateur souhaite se deconnecter
+                $data = [];
+                $data["key"] = $_SESSION["keyOnly"];
+                $result = CommonAction::callApi("signout",$data);
+
+                if ($result == "INVALID_KEY"){
+                    $message = "U ARE NOT CONNECTED";
+                    return compact ("message");
+                }
+                else{
+                    header("location:login.php");
+                    exit;
+                }
+
             }
 
             // retourne la clee avec l'url.

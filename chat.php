@@ -18,7 +18,7 @@ $data = $action->execute();
     <script src="js/chatStyle.js"></script>
 </head>
 
-<body class="background" style="background-image: url('images/background_chat.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+<body class="staticBackground">
     <div class="form-style-4">
         <form action="chat.php" method="POST">
             <input type="submit" name="btnPlay" value="PLAY">

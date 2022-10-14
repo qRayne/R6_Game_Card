@@ -9,3 +9,10 @@
     background-size: cover;
     background-attachment: fixed;
 }
+
+.error-message {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #40E0D0;
+    background-color: dimgray;
+}

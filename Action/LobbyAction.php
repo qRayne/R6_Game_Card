@@ -10,8 +10,8 @@
         protected function executeAction() {
             $data = [];
             $data["key"] = $_SESSION["keyOnly"];
-            $data["type"] = "";
             
+            // Savoir quel button le joueur veut selectionner
             if(isset($_POST["btnPVP"])){
                 $data["type"] = "PVP";
             }
@@ -19,8 +19,11 @@
                 $data["type"] = "TRAINING";
             }
 
+            // connection à l'api
             $result = CommonAction::callApi("games/auto-match",$data);
+            
         
+            // Interaction avec l'api
             if ($result == "JOINED_PVP"){
                 header("location:game.php");
                 exit;
@@ -38,7 +41,7 @@
                     $message = "THE GAME TYPE CHOOSEN IS INVALID";
                     return compact("message");
                 }
-                else if ("DECK_INCOMPLETE"){
+                else if ($result == "DECK_INCOMPLETE"){
                     $message = "UR DECK IS NOT COMPLETE";
                     return compact("message");
                 }

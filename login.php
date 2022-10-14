@@ -15,7 +15,6 @@
     <script src="js/loginBackground.js"></script>
     <title>login</title>
     <link rel="styleshset" href="Css/global.css">
-    <link rel="stylesheet" href="Css/login.css">
 </head>
 
 <body class="background">

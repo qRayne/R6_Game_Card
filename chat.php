@@ -15,7 +15,6 @@ $data = $action->execute();
     <script src="js/loginBackground.js"></script>
     <title>Game</title>
     <link rel="styleshset" href="Css/global.css">
-    <link rel="stylesheet" href="Css/chat.css">
     <script src="js/chatStyle.js"></script>
 </head>
 

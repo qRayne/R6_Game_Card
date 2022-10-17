@@ -21,14 +21,14 @@ $data = $action->execute();
 <body class="background">
 
     <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">≡</button>
+        <button onclick="dropdownMenu()" class="dropbtn">≡</button>
         <div id="myDropdown" class="dropdown-content">
             <a id="nokk">Nokk</a>
             <a id="lion">Lion</a>
-            <a id="buck">Buck</a>
+            <a id="glaz">Glaz</a>
             <a id="maverick">Maverick</a>
             <a id="vigil">Vigil</a>
-            <a id="smoke">Smoke</a>
+            <a id="ashe">Ashe</a>
         </div>
     </div>
 

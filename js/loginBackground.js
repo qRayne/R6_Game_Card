@@ -1,5 +1,5 @@
 // code de : https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_right
-function myFunction() {
+function dropdownMenu() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 window.onclick = function(event) {

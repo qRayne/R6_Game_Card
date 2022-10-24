@@ -15,7 +15,7 @@ $data = $action->execute();
     <script src="js/loginBackground.js"></script>
     <title>Login</title>
     <link rel="stylesheet" href="Css/global.css">
-    <link rel="stylesheet" href="Css/login.css">
+    <link rel="stylesheet" href="Css/index.css">
 </head>
 
 <body class="background">

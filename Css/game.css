@@ -1,0 +1,21 @@
+.box-layout-ennemie {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-bottom: #05807b 5px double;
+}
+
+.box-layout-ennemie img {
+    width: 50px;
+    padding: 10px;
+}
+
+.box-layout-carte-ennemie {
+    background-color: blue;
+}
+
+.box-layout-carte-joueur {
+    background-color: green;
+}
+
+.box-layout-joueur {
+    background-color: brown;
+}

@@ -12,7 +12,7 @@
 }
 
 .dropbtn {
-    background-color: #40E0D0;
+    background-color: #05807b;
     color: white;
     font-size: 25px;
     border: none;
@@ -37,7 +37,7 @@
 }
 
 .dropdown-content a {
-    color: #40E0D0;
+    color: #05807b;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -88,9 +88,9 @@
 .form-style-6 input[type="url"]:focus,
 .form-style-6 textarea:focus,
 .form-style-6 select:focus {
-    box-shadow: 0 0 5px #40E0D0;
+    box-shadow: 0 0 5px #05807b;
     padding: 3%;
-    border: 1px solid #40E0D0;
+    border: 1px solid #05807b;
 }
 
 .form-style-6 input[type="submit"],
@@ -100,8 +100,8 @@
     -moz-box-sizing: border-box;
     width: 100%;
     padding: 3%;
-    background: #40E0D0;
-    border-bottom: 2px solid #40E0D0;
+    background: #05807b;
+    border-bottom: 2px solid #05807b;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;
@@ -110,7 +110,7 @@
 
 .form-style-6 input[type="submit"]:hover,
 .form-style-6 input[type="button"]:hover {
-    background: #40E0D0;
+    background: #05807b;
 }
 
 .form-style-6 input[type="submit"] {

@@ -9,7 +9,25 @@
     <title>Game</title>
 </head>
 <body class="staticBackground">
+    <div class="box-layout-ennemie">
+    <img src="images/back-card.jpg" alt="r6-card">
+    <img src="images/back-card.jpg" alt="r6-card">
+    <img src="images/back-card.jpg" alt="r6-card">
+    <img src="images/back-card.jpg" alt="r6-card">
+    <img src="images/back-card.jpg" alt="r6-card">
 
-    
+    </div>
+
+    <div class="box-layout-carte-ennemie">
+
+    </div>
+
+    <div class="box-layout-carte-joueur">
+
+    </div>
+
+    <div class="box-layout-joueur">
+
+    </div>
 </body>
 </html>

@@ -13,6 +13,7 @@
         {
             $data = [];
             $data["key"] = $_SESSION["keyOnly"];
+            $_SESSION["typeGame"] = null;
 
             if(isset($_POST["btnPlay"])){
                 $data["type"] = "PVP";
@@ -20,6 +21,7 @@
 
                 if ($result == "JOINED_PVP" || $result == "CREATED_PVP"){
                     header("location:game.php"); // si l'utilisateur click sur play
+                    $_SESSION["typeGame"] = $data["type"];
                     exit;
                 }
                 else {
@@ -43,7 +45,8 @@
                 $result = CommonAction::callApi("games/auto-match",$data);
 
                 if ($result == "JOINED_TRAINING"){
-                    header("location:training.php"); // si l'utilisateur click sur play
+                    header("location:game.php"); // si l'utilisateur click sur play
+                    $_SESSION["typeGame"] = $data["type"];
                     exit;
                 }
                 else {

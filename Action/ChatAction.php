@@ -11,18 +11,58 @@
     
         protected function executeAction()
         {
+            $data = [];
+            $data["key"] = $_SESSION["keyOnly"];
+
             if(isset($_POST["btnPlay"])){
-                header("location:lobby.php"); // si l'utilisateur click sur play
-                exit;
+                $data["type"] = "PVP";
+                $result = CommonAction::callApi("games/auto-match",$data);
+
+                if ($result == "JOINED_PVP" || $result == "CREATED_PVP"){
+                    header("location:game.php"); // si l'utilisateur click sur play
+                    exit;
+                }
+                else {
+                    if ($result == "INVALID_KEY"){
+                        $message = "UR KEY IS INVALID";
+                        return compact("message");
+                    }
+                    else if ($result == "INVALID_GAME_TYPE"){
+                        $message = "THE GAME TYPE CHOSEN IS INVALID";
+                        return compact("message");
+                    }
+                    else if ($result == "DECK_INCOMPLETE"){
+                        $message = "UR DECK IS NOT COMPLETE";
+                        return compact("message");
+                    }
+                }
             }
-            else if (isset($_POST["btnDeck"])){
-                header("location:deck.php");
-                exit;
+            else if (isset($_POST["btnTraining"])){
+
+                $data["type"] = "TRAINING";
+                $result = CommonAction::callApi("games/auto-match",$data);
+
+                if ($result == "JOINED_TRAINING"){
+                    header("location:training.php"); // si l'utilisateur click sur play
+                    exit;
+                }
+                else {
+                    if ($result == "INVALID_KEY"){
+                        $message = "UR KEY IS INVALID";
+                        return compact("message");
+                    }
+                    else if ($result == "INVALID_GAME_TYPE"){
+                        $message = "THE GAME TYPE CHOSEN IS INVALID";
+                        return compact("message");
+                    }
+                    else if ($result == "DECK_INCOMPLETE"){
+                        $message = "UR DECK IS NOT COMPLETE";
+                        return compact("message");
+                    }
+                }
             }
             else if (isset($_POST["btnQuit"])){
                 // L'utilisateur souhaite se deconnecter
-                $data = [];
-                $data["key"] = $_SESSION["keyOnly"];
                 $result = CommonAction::callApi("signout",$data);
 
                 if ($result == "INVALID_KEY"){
@@ -30,10 +70,9 @@
                     return compact ("message");
                 }
                 else{
-                    header("location:login.php");
+                    header("location:index.php");
                     exit;
                 }
-
             }
 
             // retourne la clee avec l'url.

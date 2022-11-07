@@ -4,4 +4,4 @@
     $action = new GameAction();
     $data = $action->execute();
 
-    echo json_encode($data["output"]);
+    echo json_encode($data["result"]);

@@ -1,9 +1,3 @@
-<?php
-require_once("action/GameAction.php");
-
-$action = new GameAction();
-$data = $action->execute();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,13 +12,6 @@ $data = $action->execute();
 </head>
 
 <body class="staticBackground">
-    <?php
-    if (!empty($data["message"])) {
-    ?>
-        <div class="error-message"><?= $data["message"] ?></div>
-    <?php
-    }
-    ?>
 
     <div class="box-layout-ennemie">
         <img src="images/back-card.jpg" alt="r6-card">

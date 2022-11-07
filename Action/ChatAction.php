@@ -13,7 +13,6 @@
         {
             $data = [];
             $data["key"] = $_SESSION["keyOnly"];
-            $_SESSION["typeGame"] = null;
 
             if(isset($_POST["btnPlay"])){
                 $data["type"] = "PVP";
@@ -21,7 +20,6 @@
 
                 if ($result == "JOINED_PVP" || $result == "CREATED_PVP"){
                     header("location:game.php"); // si l'utilisateur click sur play
-                    $_SESSION["typeGame"] = $data["type"];
                     exit;
                 }
                 else {
@@ -46,7 +44,6 @@
 
                 if ($result == "JOINED_TRAINING"){
                     header("location:game.php"); // si l'utilisateur click sur play
-                    $_SESSION["typeGame"] = $data["type"];
                     exit;
                 }
                 else {

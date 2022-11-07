@@ -10,32 +10,29 @@
         protected function executeAction() {
             $data = [];
             $data["key"] = $_SESSION["keyOnly"];
+            $output = "";
 
             $result = CommonAction::callApi("games/state",$data);
 
             if ($result == "WAITING"){
-                $message = "UR WAITING FOR SOMEONE";
-                return compact("message");
+                $output = "WAITING";
             }
             else if ($result == "LAST_GAME_WON"){
-                $message = "U WON THE LAST GAME";
-                return compact("message");
+                $output = "LAST_GAME_WON";
             }
             else if ($result == "LAST_GAME_LOST"){
-                $message = "U LOST THE LAST GAME";
-                return compact("message");
+                $output = "LAST_GAME_LOST";
+
             }
             else if ($result == "INVALID_KEY"){
-                $message = "UR KEY IS INVALID";
-                return compact("message");
+                $output = "INVALID_KEY";
             }
             else{
                 // un document json sera retournee
                 // On fera les manipulations avec le json
-                $message = "Un json est entrain d'être retournee";
-                $_SESSION["json"] = $result;
-                return compact("message");
+                $output = $result;
             }
 
+            return compact("output");
         }
     }

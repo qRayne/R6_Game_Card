@@ -11,6 +11,7 @@
 .box-layout-ennemie,
 .box-layout-joueur p {
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 .box-layout-ennemie img {
@@ -33,7 +34,7 @@
 }
 
 #health-logo {
-    margin-left: 220px;
+    margin-left: 218px;
     height: 80px;
     width: 80px;
 }
@@ -53,7 +54,7 @@
 #name-ennemy {
     position: absolute;
     top: 9.5%;
-    left: 47.9%;
+    left: 47.6%;
 }
 
 #mp-logo {

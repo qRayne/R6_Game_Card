@@ -10,9 +10,8 @@
         protected function executeAction() {
             $data = [];
             $data["key"] = $_SESSION["keyOnly"];
-            $data["type"];
-
-            $result = CommonAction::callApi("games/action",$data);
+            $data["type"] = "HERO_POWER";
+            $result = CommonAction::callApi("games/state",$data);
             return compact("result");
         }
     }

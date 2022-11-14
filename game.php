@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="Css/global.css">
     <link rel="stylesheet" href="Css/game.css">
     <script type="module" src="js/game.js"></script>
-    <script type="module" src="js/play.js"></script>
     <title>Game</title>
 </head>
 
@@ -47,13 +46,9 @@
         <img id="mp-logoMe" src="images/health.jpg" alt="mp-image"><br>
         <p id="nb-cartes-textMe"></p>
         <img id="nb-cartesMe"src="images/back-card.jpg" alt="r6-nbCards">
-
-        <!-- <button id="hero-power-button">HERO POWER</button>
-        <button id="end-turn-button">END TURN </button> -->
     </div>
 
     <div class="infos-game">
-
     </div>
 </body>
 

@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Css/global.css">
     <link rel="stylesheet" href="Css/game.css">
-    <script src="js/game.js"></script>
+    <script type="module" src="js/game.js"></script>
+    <script type="module" src="js/play.js"></script>
     <title>Game</title>
 </head>
 

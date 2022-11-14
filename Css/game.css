@@ -3,23 +3,103 @@
     border-bottom: #05807b 5px double;
 }
 
+.box-layout-joueur {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-top: #05807b 5px double;
+}
+
+.box-layout-ennemie,
+.box-layout-joueur p {
+    color: white;
+}
+
 .box-layout-ennemie img {
     width: 50px;
     padding: 10px;
 }
 
-.box-layout-carte-ennemie {
-    background-color: blue;
-}
-
-.box-layout-carte-joueur {
-    background-color: green;
+.box-layout-joueur img {
+    width: 50px;
 }
 
 .box-layout-joueur {
-    background-color: brown;
+    height: 30%;
+    position: fixed;
+    bottom: 0;
 }
 
 .infos-game {
     color: white;
+}
+
+#health-logo {
+    margin-left: 220px;
+    height: 80px;
+    width: 80px;
+}
+
+#nb-health {
+    position: absolute;
+    top: 5%;
+    left: 32.9%;
+}
+
+#recruit-logo {
+    margin-left: 200px;
+    height: 4.5%;
+    width: 4.5%;
+}
+
+#name-ennemy {
+    position: absolute;
+    top: 9.5%;
+    left: 47.9%;
+}
+
+#mp-logo {
+    margin-left: 200px;
+    height: 80px;
+    width: 80px;
+}
+
+#nb-mp {
+    position: absolute;
+    top: 5%;
+    left: 65.1%;
+}
+
+#nb-cartes {
+    margin-left: 540px;
+}
+
+#nb-cartes-text {
+    position: absolute;
+    top: 5%;
+    left: 97.7%;
+}
+
+#nb-cartesMe {
+    padding-top: 40px;
+}
+
+#mp-logoMe {
+    padding-top: 60px;
+}
+
+#nb-healthMe {
+    position: absolute;
+    left: 34%;
+    top: 6%;
+}
+
+#nb-mpMe {
+    position: absolute;
+    left: 42%;
+    top: 46%;
+}
+
+#nb-cartes-textMe {
+    position: absolute;
+    left: 35%;
+    top: 83%;
 }

@@ -1,7 +1,7 @@
 <?php
-    require_once("Action/GameAction.php");
+    require_once("Action/AjaxStateAction.php");
 
-    $action = new GameAction();
+    $action = new AjaxStateAction();
     $data = $action->execute();
 
     echo json_encode($data["result"]);

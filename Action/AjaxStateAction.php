@@ -1,14 +1,17 @@
 <?php
     require_once("action/CommonAction.php");
 
-    class GameAction extends CommonAction {
+    class AjaxStateAction extends CommonAction {
 
         public function __construct() {
             parent::__construct(CommonAction::$VISIBILITY_PUBLIC);
         }
 
         protected function executeAction() {
-        
-            return [];
+            $data = [];
+            $data["key"] = $_SESSION["keyOnly"];
+
+            $result = CommonAction::callApi("games/state",$data);
+            return compact("result");
         }
     }

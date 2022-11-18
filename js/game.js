@@ -4,21 +4,37 @@ const state = () => {
         })
         .then(response => response.json())
         .then(data => {
+
+
             console.log(data);
             checkGameState(data);
+
+            const endturn = document.querySelector("#endturn");
+            endturn.addEventListener('click', () => {
+                statePlay("END_TURN");
+            });
+            const surrender = document.querySelector("#surrender");
+            endturn.addEventListener('click', () => {
+                statePlay("SURRENDER");
+            });
+
+
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
 }
 
-const statePlay = () => {
-    fetch("ajax-play.php", { // Il faut créer cette page et son contrôleur appelle
-            method: "POST" // l’API (games/state)
-        })
-        .then(response => response.json())
-        .then(data => {
-            changeStatePlay(data);
-        })
-}
+const statePlay = (e) => {
+    let data = new FormData();
+
+    data.append("type", e);
+
+    fetch("ajax-play.php",{
+        method : "post",
+        body : data
+    })
+    .then(response => response.json())
+};
+
 window.addEventListener("load", () => {
     setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
     //statePlay(); // Appel initial (attendre 1 seconde)

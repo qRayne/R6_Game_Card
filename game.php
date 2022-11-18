@@ -1,3 +1,10 @@
+<?php
+require_once("action/GameAction.php");
+
+$action = new GameAction();
+$data = $action->execute();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,8 +38,12 @@
         <img id="nb-cartes"src="images/back-card.jpg" alt="r6-nbCards">
         <p id="nb-cartes-text"></p>
     </div>
-    <div class="box-layout-carte-ennemie">
 
+    <div class="box-layout-carte-ennemie">
+        <div method="post">
+            <button name="endturn" id="endturn"></button>
+            <button name="surrender" id="surrender"></button>
+        </div>
     </div>
 
     <div class="box-layout-carte-joueur">

@@ -4,6 +4,8 @@
 }
 
 .box-layout-joueur {
+    display: flex;
+    justify-content: center;
     background-color: rgba(255, 255, 255, 0.15);
     border-top: #05807b 5px double;
 }
@@ -24,7 +26,7 @@
 }
 
 .box-layout-joueur {
-    height: 30%;
+    height: 20%;
     position: fixed;
     bottom: 0;
 }
@@ -104,3 +106,14 @@
     left: 35%;
     top: 83%;
 }
+
+#surrender {
+    margin-top: 10px;
+}
+
+
+/* .buttonGame {
+    width: 500px;
+    height: 500px;
+    padding-left: 200vh;
+} */

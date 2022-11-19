@@ -1,5 +1,6 @@
-export class Cartes {
-    constructor(cost, hp, atk, mechanics, uid, baseHp) {
+export default class Cartes {
+    constructor(id, cost, hp, atk, mechanics, uid, baseHp) {
+        this.id = id;
         this.cost = cost;
         this.hp = hp;
         this.atk = atk;

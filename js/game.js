@@ -1,23 +1,22 @@
+import Cartes from "./Cartes.js";
+
 const state = () => {
     fetch("ajax-game.php", { // Il faut créer cette page et son contrôleur appelle
             method: "POST" // l’API (games/state)
         })
         .then(response => response.json())
         .then(data => {
-
-
-            console.log(data);
             checkGameState(data);
 
             const endturn = document.querySelector("#endturn");
             endturn.addEventListener('click', () => {
                 statePlay("END_TURN");
             });
+
             const surrender = document.querySelector("#surrender");
-            endturn.addEventListener('click', () => {
+            surrender.addEventListener('click', () => {
                 statePlay("SURRENDER");
             });
-
 
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
@@ -28,16 +27,18 @@ const statePlay = (e) => {
 
     data.append("type", e);
 
-    fetch("ajax-play.php",{
-        method : "post",
-        body : data
-    })
-    .then(response => response.json())
+    fetch("ajax-play.php", {
+            method: "post",
+            body: data
+        })
+        .then(response => response.json())
+        .then(data => {
+
+        })
 };
 
 window.addEventListener("load", () => {
     setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
-    //statePlay(); // Appel initial (attendre 1 seconde)
 });
 
 const checkGameState = (data) => {
@@ -54,7 +55,34 @@ const checkGameState = (data) => {
     }
 }
 
+// function loadImages(sources, callback) {
+//     var images = {};
+//     var loadedImages = 0;
+//     var numImages = 0;
+//     // get num of sources
+//     for (var src in sources) {
+//         numImages++;
+//     }
+//     for (var src in sources) {
+//         images[src] = new Image();
+//         images[src].onload = function() {
+//             if (++loadedImages >= numImages) {
+//                 callback(images);
+//             }
+//         };
+//         images[src].src = sources[src];
+//     }
+// }
+// var canvas = document.getElementById('canvas');
+// var context = canvas.getContext('2d');
+
+// var sources = {
+//     image1: "images/front-card.jpg"
+// };
+
 const modifiyGameState = (data) => {
+    let nbCartesHandMe = [];
+    let nbCartesBoardOpponent = [];
 
     if (data != null) {
         // pour les textes de base -> null besoin de faire des append child -> on peut injecter directement notre data avec innerHtml
@@ -64,45 +92,59 @@ const modifiyGameState = (data) => {
         document.querySelector("#nb-mp").innerHTML = data["opponent"]["mp"];
         document.querySelector("#nb-cartes-text").innerHTML = data["opponent"]["remainingCardsCount"];
 
+        // pour les cartes de l'ennemie
+        data["opponent"]["board"].forEach(element => {
+            let cartes = new Cartes(element["id"], element["cost"], element["hp"],
+                element["atk"], element["mechanics"], element["uid"], element["baseHp"]);
+            nbCartesBoardOpponent.push(cartes);
+            console.log("le nombre de cartes dans le board de l'ennemie " + nbCartesBoardOpponent.length);
+        });
+
         // mes donnees 
-        document.querySelector("#nb-healthMe").innerHTML = data["hp"];
-        document.querySelector("#nb-mpMe").innerHTML = data["mp"];
-        document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
-    }
-}
+        // document.querySelector("#nb-healthMe").innerHTML = data["hp"];
+        // document.querySelector("#nb-mpMe").innerHTML = data["mp"];
+        // document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
 
-const changeStatePlay = (data) => {
-    if (data != null) {
-        if (typeof data !== "object") {
-            if (data == "INVALID_KEY") {
-                document.querySelector(".error-message").innerHTML = "INVALID_KEY";
-            } else if (data == "INVALID_ACTION") {
+        // pour les cartes que j'ai dans les mains
+        data["hand"].forEach(element => {
+            let cartes = new Cartes(element["id"], element["cost"], element["hp"],
+                element["atk"], element["mechanics"], element["uid"], element["baseHp"]);
+            nbCartesHandMe.push(cartes);
+            console.log("le nombre de cartes que j'ai dans les mains " + nbCartesHandMe.length);
+        })
 
-            } else if (data == "ACTION_IS_NOT_AN_OBJECT") {
+        // loadImages(sources, function(images) {
+        //     context.drawImage(images.image1, 50, 0);
+        //     context.drawImage(images.image1, 300, 0);
+        // });
 
-            } else if (data == "NOT_ENOUGH_ENERGY") {
+        // let image = document.createElement("img");
+        // let src = document.querySelector(".box-layout-joueur");;
+        // image.src = "images/front-card.jpg";
+        // image.width = "300";
+        // image.height = "300";
+        // src.appendChild(image.cloneNode(true));
 
-            } else if (data == "BOARD_IS_FULL") {
+        // let x = 0;
+        // data["hand"].forEach(element => {
+        //     let circle_canvas = document.getElementById("canvas");
+        //     let context = circle_canvas.getContext("2d");
 
-            } else if (data == "CARD_NOT_IN_HAND") {
+        //     // Draw Image function
+        //     let img = new Image();
+        //     img.src = "images/front-card.jpg";
+        //     img.id = element.id;
+        //     img.onload = function() {
+        //         context.drawImage(img, x, 0);
+        //         context.fillStyle = "#05807b";
+        //         context.font = "18px sans-serif";
+        //         context.fillText(element["cost"], 40, 319);
+        //         context.fillText(element["hp"], 103, 319);
+        //         context.fillText(element["atk"], 166, 319);
+        //     };
 
-            } else if (data == "CARD_IS_SLEEPING") {
+        //     console.log(element.id);
+        // })
 
-            } else if (data == "MUST_ATTACK_TAUNT_FIRST") {
-
-            } else if (data == "OPPONENT_CARD_NOT_FOUND") {
-
-            } else if (data == "OPPONENT_CARD_HAS_STEALTH") {
-
-            } else if (data == "CARD_NOT_FOUND") {
-
-            } else if (data == "ERROR_PROCESSING_ACTION") {
-
-            } else if (data == "INTERNAL_ACTION_ERROR") {
-
-            } else if (data == "HERO_POWER_ALREADY_USED") {
-
-            }
-        }
     }
 }

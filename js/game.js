@@ -6,6 +6,7 @@ const state = () => {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             checkGameState(data);
 
             const endturn = document.querySelector("#endturn");
@@ -22,6 +23,7 @@ const state = () => {
         })
 }
 
+// Pour l'action de end_turn, surrender et hero_power
 const statePlay = (e) => {
     let data = new FormData();
 
@@ -33,9 +35,45 @@ const statePlay = (e) => {
         })
         .then(response => response.json())
         .then(data => {
-
+            errorsHandlers(data);
         })
 };
+
+// pour play
+const play = (e, uid) => {
+    let data = new FormData();
+
+    data.append("type", e);
+    data.append("uid", uid);
+
+    fetch("ajax-play.php", {
+            method: "post",
+            body: data
+        })
+        .then(response => response.json())
+        .then(data => {
+            errorsHandlers(data);
+        })
+}
+
+// pour attaquer
+const attack = (e, uid, targetuid) => {
+    let data = new FormData();
+
+    data.append("type", e);
+    data.append("uid", uid);
+    data.append("targetuid", uid);
+
+
+    fetch("ajax-play.php", {
+            method: "post",
+            body: data
+        })
+        .then(response => response.json())
+        .then(data => {
+            errorsHandlers(data);
+        })
+}
 
 window.addEventListener("load", () => {
     setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
@@ -72,7 +110,6 @@ const modifiyGameState = (data) => {
             let cartes = new Cartes(element["id"], element["cost"], element["hp"],
                 element["atk"], element["mechanics"], element["uid"], element["baseHp"]);
             nbCartesBoardOpponent.push(cartes);
-            console.log("le nombre de cartes dans le board de l'ennemie " + nbCartesBoardOpponent.length);
         });
 
         //mes donnees
@@ -85,10 +122,44 @@ const modifiyGameState = (data) => {
             let cartes = new Cartes(element["id"], element["cost"], element["hp"],
                 element["atk"], element["mechanics"], element["uid"], element["baseHp"]);
             nbCartesHandMe.push(cartes);
-            console.log("le nombre de cartes que j'ai dans les mains " + nbCartesHandMe.length);
+            console.log(cartes.id);
         })
+    }
 
-        // pour boucles mes cartes
+    //play("PLAY", 79);
+}
 
+const errorsHandlers = (data) => {
+    if (data != null) {
+        if (typeof data !== "object") {
+            if (data == "INVALID_KEY")
+                document.querySelector(".error-message").innerHTML = "INVALID_KEY";
+            else if (data == "INVALID_ACTION")
+                document.querySelector(".error-message").innerHTML = "INVALID_ACTION";
+            else if (data == "ACTION_IS_NOT_AN_OBJECT")
+                document.querySelector(".error-message").innerHTML = "ACTION_IS_NOT_AN_OBJECT";
+            else if (data == "NOT_ENOUGH_ENERGY")
+                document.querySelector(".error-message").innerHTML = "NOT_ENOUGH_ENERGY";
+            else if (data == "BOARD_IS_FULL")
+                document.querySelector(".error-message").innerHTML = "BOARD_IS_FULL";
+            else if (data == "CARD_NOT_IN_HAND")
+                document.querySelector(".error-message").innerHTML = "CARD_NOT_IN_HAND";
+            else if (data == "CARD_IS_SLEEPING")
+                document.querySelector(".error-message").innerHTML = "CARD_IS_SLEEPING";
+            else if (data == "MUST_ATTACK_TAUNT_FIRST")
+                document.querySelector(".error-message").innerHTML = "MUST_ATTACK_TAUNT_FIRST";
+            else if (data == "OPPONENT_CARD_NOT_FOUND")
+                document.querySelector(".error-message").innerHTML = "OPPONENT_CARD_NOT_FOUND";
+            else if (data == "OPPONENT_CARD_HAS_STEALTH")
+                document.querySelector(".error-message").innerHTML = "OPPONENT_CARD_HAS_STEALTH";
+            else if (data == "CARD_NOT_FOUND")
+                document.querySelector(".error-message").innerHTML = "CARD_NOT_FOUND";
+            else if (data == "ERROR_PROCESSING_ACTION")
+                document.querySelector(".error-message").innerHTML = "ERROR_PROCESSING_ACTION";
+            else if (data == "INTERNAL_ACTION_ERROR")
+                document.querySelector(".error-message").innerHTML = "INTERNAL_ACTION_ERROR";
+            else if (data == "HERO_POWER_ALREADY_USED")
+                document.querySelector(".error-message").innerHTML = "HERO_POWER_ALREADY_USED";
+        }
     }
 }

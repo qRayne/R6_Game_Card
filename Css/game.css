@@ -4,14 +4,28 @@
 }
 
 .box-layout-joueur {
-    display: flex;
-    justify-content: center;
     background-color: rgba(255, 255, 255, 0.15);
+    border-top: #05807b 5px double;
+    width: 25%;
+}
+
+.box-layout-cartes {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 22.5%;
     border-top: #05807b 5px double;
 }
 
+.box-layout-cartes p {
+    position: absolute;
+}
+
 .box-layout-ennemie,
-.box-layout-joueur p {
+.box-layout-joueur p,
+.box-layout-cartes {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
@@ -26,7 +40,7 @@
 }
 
 .box-layout-joueur {
-    height: 20%;
+    height: 37.3%;
     position: fixed;
     bottom: 0;
 }
@@ -56,7 +70,7 @@
 #name-ennemy {
     position: absolute;
     top: 9.5%;
-    left: 47.6%;
+    left: 48.1%;
 }
 
 #mp-logo {
@@ -82,38 +96,121 @@
 }
 
 #nb-cartesMe {
-    padding-top: 40px;
+    padding-top: 80px;
 }
 
 #mp-logoMe {
-    padding-top: 60px;
+    padding-top: 90px;
 }
 
 #nb-healthMe {
     position: absolute;
-    left: 34%;
-    top: 6%;
+    left: 3.5%;
+    top: 4%;
 }
 
 #nb-mpMe {
     position: absolute;
-    left: 42%;
-    top: 46%;
+    left: 4.5%;
+    top: 44.5%;
 }
 
 #nb-cartes-textMe {
     position: absolute;
-    left: 35%;
-    top: 83%;
+    left: 3.5%;
+    top: 85%;
 }
 
 #surrender {
     margin-top: 10px;
 }
 
+#nb-cost1 {
+    position: absolute;
+    left: 2%;
+    top: 84%;
+}
 
-/* .buttonGame {
-    width: 500px;
-    height: 500px;
-    padding-left: 200vh;
-} */
+#nb-hp1 {
+    position: absolute;
+    left: 5.4%;
+    top: 84%;
+}
+
+#nb-atkt1 {
+    position: absolute;
+    left: 8.7%;
+    top: 84%;
+}
+
+#nb-cost2 {
+    position: absolute;
+    left: 13.3%;
+    top: 84%;
+}
+
+#nb-hp2 {
+    position: absolute;
+    left: 16.6%;
+    top: 84%;
+}
+
+#nb-atkt2 {
+    position: absolute;
+    left: 20%;
+    top: 84%;
+}
+
+#nb-cost3 {
+    position: absolute;
+    left: 2%;
+    top: 84%;
+}
+
+#nb-hp3 {
+    position: absolute;
+    left: 5.4%;
+    top: 84%;
+}
+
+#nb-atkt3 {
+    position: absolute;
+    left: 8.7%;
+    top: 84%;
+}
+
+#nb-cost4 {
+    position: absolute;
+    left: 2%;
+    top: 84%;
+}
+
+#nb-hp4 {
+    position: absolute;
+    left: 5.4%;
+    top: 84%;
+}
+
+#nb-atkt4 {
+    position: absolute;
+    left: 8.7%;
+    top: 84%;
+}
+
+#nb-cost5 {
+    position: absolute;
+    left: 2%;
+    top: 84%;
+}
+
+#nb-hp5 {
+    position: absolute;
+    left: 5.4%;
+    top: 84%;
+}
+
+#nb-atkt5 {
+    position: absolute;
+    left: 8.7%;
+    top: 84%;
+}

@@ -8,4 +8,5 @@ export default class Cartes {
         this.uid = uid;
         this.baseHp = baseHp;
     }
+
 }

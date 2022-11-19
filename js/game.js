@@ -55,31 +55,6 @@ const checkGameState = (data) => {
     }
 }
 
-// function loadImages(sources, callback) {
-//     var images = {};
-//     var loadedImages = 0;
-//     var numImages = 0;
-//     // get num of sources
-//     for (var src in sources) {
-//         numImages++;
-//     }
-//     for (var src in sources) {
-//         images[src] = new Image();
-//         images[src].onload = function() {
-//             if (++loadedImages >= numImages) {
-//                 callback(images);
-//             }
-//         };
-//         images[src].src = sources[src];
-//     }
-// }
-// var canvas = document.getElementById('canvas');
-// var context = canvas.getContext('2d');
-
-// var sources = {
-//     image1: "images/front-card.jpg"
-// };
-
 const modifiyGameState = (data) => {
     let nbCartesHandMe = [];
     let nbCartesBoardOpponent = [];
@@ -100,10 +75,10 @@ const modifiyGameState = (data) => {
             console.log("le nombre de cartes dans le board de l'ennemie " + nbCartesBoardOpponent.length);
         });
 
-        // mes donnees 
-        // document.querySelector("#nb-healthMe").innerHTML = data["hp"];
-        // document.querySelector("#nb-mpMe").innerHTML = data["mp"];
-        // document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
+        //mes donnees
+        document.querySelector("#nb-healthMe").innerHTML = data["hp"];
+        document.querySelector("#nb-mpMe").innerHTML = data["mp"];
+        document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
 
         // pour les cartes que j'ai dans les mains
         data["hand"].forEach(element => {
@@ -113,38 +88,7 @@ const modifiyGameState = (data) => {
             console.log("le nombre de cartes que j'ai dans les mains " + nbCartesHandMe.length);
         })
 
-        // loadImages(sources, function(images) {
-        //     context.drawImage(images.image1, 50, 0);
-        //     context.drawImage(images.image1, 300, 0);
-        // });
-
-        // let image = document.createElement("img");
-        // let src = document.querySelector(".box-layout-joueur");;
-        // image.src = "images/front-card.jpg";
-        // image.width = "300";
-        // image.height = "300";
-        // src.appendChild(image.cloneNode(true));
-
-        // let x = 0;
-        // data["hand"].forEach(element => {
-        //     let circle_canvas = document.getElementById("canvas");
-        //     let context = circle_canvas.getContext("2d");
-
-        //     // Draw Image function
-        //     let img = new Image();
-        //     img.src = "images/front-card.jpg";
-        //     img.id = element.id;
-        //     img.onload = function() {
-        //         context.drawImage(img, x, 0);
-        //         context.fillStyle = "#05807b";
-        //         context.font = "18px sans-serif";
-        //         context.fillText(element["cost"], 40, 319);
-        //         context.fillText(element["hp"], 103, 319);
-        //         context.fillText(element["atk"], 166, 319);
-        //     };
-
-        //     console.log(element.id);
-        // })
+        // pour boucles mes cartes
 
     }
 }

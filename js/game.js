@@ -39,42 +39,6 @@ const statePlay = (e) => {
         })
 };
 
-// pour play
-const play = (e, uid) => {
-    let data = new FormData();
-
-    data.append("type", e);
-    data.append("uid", uid);
-
-    fetch("ajax-play.php", {
-            method: "post",
-            body: data
-        })
-        .then(response => response.json())
-        .then(data => {
-            errorsHandlers(data);
-        })
-}
-
-// pour attaquer
-const attack = (e, uid, targetuid) => {
-    let data = new FormData();
-
-    data.append("type", e);
-    data.append("uid", uid);
-    data.append("targetuid", uid);
-
-
-    fetch("ajax-play.php", {
-            method: "post",
-            body: data
-        })
-        .then(response => response.json())
-        .then(data => {
-            errorsHandlers(data);
-        })
-}
-
 window.addEventListener("load", () => {
     setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
 });
@@ -113,20 +77,47 @@ const modifiyGameState = (data) => {
         });
 
         //mes donnees
-        document.querySelector("#nb-healthMe").innerHTML = data["hp"];
-        document.querySelector("#nb-mpMe").innerHTML = data["mp"];
-        document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
+        // document.querySelector("#nb-healthMe").innerHTML = data["hp"];
+        // document.querySelector("#nb-mpMe").innerHTML = data["mp"];
+        // document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
 
         // pour les cartes que j'ai dans les mains
+        while (document.querySelector(".box-layout-joueur").firstChild) {
+            document.querySelector(".box-layout-joueur").removeChild(document.querySelector(".box-layout-joueur").lastChild)
+        }
+
         data["hand"].forEach(element => {
             let cartes = new Cartes(element["id"], element["cost"], element["hp"],
                 element["atk"], element["mechanics"], element["uid"], element["baseHp"]);
             nbCartesHandMe.push(cartes);
-            console.log(cartes.id);
+        })
+
+        data["hand"].forEach(element => {
+            let mainDiv = document.createElement("div");
+
+            let costDiv = document.createElement("div");
+            let costNode = document.createTextNode("cost " + element["cost"]);
+
+            let hpDiv = document.createElement("div");
+            let hpNode = document.createTextNode("hp " + element["hp"]);
+
+            let atkDiv = document.createElement("div");
+            let atkNode = document.createTextNode("atk " + element["atk"]);
+
+            costDiv.append(costNode);
+            hpDiv.append(hpNode);
+            atkDiv.append(atkNode);
+
+            mainDiv.append(costDiv);
+            mainDiv.append(hpDiv);
+            mainDiv.append(atkDiv);
+            mainDiv.style.backgroundImage = "url('images/front-card.jpg')";
+            mainDiv.style.margin = "20px";
+            mainDiv.style.color = "white";
+
+            document.querySelector(".box-layout-joueur").append(mainDiv);
         })
     }
-
-    //play("PLAY", 79);
 }
 
 const errorsHandlers = (data) => {

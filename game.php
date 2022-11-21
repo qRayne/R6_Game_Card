@@ -47,36 +47,12 @@ $data = $action->execute();
     </div>
 
     <div class="box-layout-joueur">
-        <p id="nb-healthMe"></p>
+        <!-- <p id="nb-healthMe"></p>
         <img id="health-logoMe" src="images/health.jpg" alt="mp-image"><br>
         <p id="nb-mpMe"></p>
         <img id="mp-logoMe" src="images/health.jpg" alt="mp-image"><br>
         <p id="nb-cartes-textMe"></p>
-        <img id="nb-cartesMe" src="images/back-card.jpg" alt="r6-nbCards">
-        <!-- <canvas id="canvas" width="4000" height="360"></canvas> -->
-    </div>
-
-    <div class="box-layout-cartes">
-        <img src="images/front-card.jpg" alt="r6-card">
-        <img src="images/front-card.jpg" alt="r6-card">
-        <img src="images/front-card.jpg" alt="r6-card">
-        <img src="images/front-card.jpg" alt="r6-card">
-        <img src="images/front-card.jpg" alt="r6-card">
-            <p id="nb-cost1">0</p>
-            <p id="nb-hp1">1</p>
-            <p id="nb-atkt1">2</p>
-            <p id="nb-cost2">3</p>
-            <p id="nb-hp2">4</p>
-            <p id="nb-atkt2">5</p>
-            <p id="nb-cost3"></p>
-            <p id="nb-hp3"></p>
-            <p id="nb-atkt3"></p>
-            <p id="nb-cost4"></p>
-            <p id="nb-hp4"></p>
-            <p id="nb-atkt4"></p>
-            <p id="nb-cost5"></p>
-            <p id="nb-hp5"></p>
-            <p id="nb-atkt5"></p>
+        <img id="nb-cartesMe" src="images/back-card.jpg" alt="r6-nbCards"> -->
     </div>
 
     <div class="buttonendturn" method="post">

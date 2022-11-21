@@ -9,4 +9,50 @@ export default class Cartes {
         this.baseHp = baseHp;
     }
 
+
+    static createElement(className, element, idCarte) {
+        let mainDiv = document.createElement("div");
+        mainDiv.id = idCarte;
+
+        let costDiv = document.createElement("div");
+        let costNode = document.createTextNode("Cost " + element["cost"]);
+        costDiv.id = idCarte;
+
+        let hpDiv = document.createElement("div");
+        let hpNode = document.createTextNode("Hp " + element["hp"]);
+        hpDiv.id = idCarte;
+
+        let atkDiv = document.createElement("div");
+        let atkNode = document.createTextNode("Atk " + element["atk"]);
+        atkDiv.id = idCarte;
+
+        let mecDiv = document.createElement("div");
+        let mecNode = document.createTextNode(element["mechanics"][0]);
+        mecDiv.id = idCarte;
+
+        costDiv.append(costNode);
+        hpDiv.append(hpNode);
+        atkDiv.append(atkNode);
+        mecDiv.append(mecNode);
+
+        mainDiv.append(costDiv);
+        mainDiv.append(hpDiv);
+        mainDiv.append(atkDiv);
+        mainDiv.append(mecDiv);
+
+        mainDiv.style.height = "160px";
+        mainDiv.style.width = "100px";
+        mainDiv.style.textAlign = "center";
+        mainDiv.style.backgroundColor = "#05807b";
+        mainDiv.style.opacity = "0.8";
+
+        // mainDiv.style.backgroundImage = "url('images/front-card.jpg')";
+        // mainDiv.style.backgroundRepeat = "no-repeat";
+        // mainDiv.style.backgroundSize = "cover";
+        mainDiv.style.margin = "20px";
+        mainDiv.style.color = "white";
+
+        document.querySelector(className).append(mainDiv);
+    }
+
 }

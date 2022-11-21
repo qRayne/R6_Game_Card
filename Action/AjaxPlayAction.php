@@ -11,6 +11,8 @@
             $data = [];
             $data["key"] = $_SESSION["keyOnly"];
             $data["type"] = $_POST["type"];
+            $data["uid"] = $_POST["uid"];
+            $data["targetuid"] = $_POST["targetuid"];
 
             $action = CommonAction::callApi("games/action", $data);
             return compact("action");

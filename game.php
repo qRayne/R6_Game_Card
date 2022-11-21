@@ -39,14 +39,14 @@ $data = $action->execute();
         <p id="nb-cartes-text"></p>
     </div>
 
-    <div class="box-layout-carte-ennemie">
+    <div class="box-layout-carte-ennemie" method="post">
     </div>
 
-    <div class="box-layout-carte-joueur">
+    <div class="box-layout-carte-joueur" method="post">
 
     </div>
 
-    <div class="box-layout-joueur">
+    <div class="box-layout-joueur" method="post">
         <!-- <p id="nb-healthMe"></p>
         <img id="health-logoMe" src="images/health.jpg" alt="mp-image"><br>
         <p id="nb-mpMe"></p>
@@ -55,10 +55,10 @@ $data = $action->execute();
         <img id="nb-cartesMe" src="images/back-card.jpg" alt="r6-nbCards"> -->
     </div>
 
-    <div class="buttonendturn" method="post">
+    <!-- <div class="buttonendturn" method="post">
         <button id="endturn" name="endturn">END TURN </button>
         <button id="surrender" name="surrender">SURRENDER</button>
-    </div>
+    </div> -->
 
 </body>
 

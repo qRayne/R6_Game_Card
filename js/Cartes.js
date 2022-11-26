@@ -43,13 +43,11 @@ export default class Cartes {
         mainDiv.style.height = "160px";
         mainDiv.style.width = "100px";
         mainDiv.style.textAlign = "center";
-        mainDiv.style.backgroundColor = "#05807b";
+        mainDiv.style.backgroundColor = "#0e1111";
+        mainDiv.style.border = "#05807b 5px solid";
         mainDiv.style.opacity = "0.8";
-
-        // mainDiv.style.backgroundImage = "url('images/front-card.jpg')";
-        // mainDiv.style.backgroundRepeat = "no-repeat";
-        // mainDiv.style.backgroundSize = "cover";
         mainDiv.style.margin = "20px";
+        mainDiv.style.marginTop = "10px";
         mainDiv.style.color = "white";
 
         document.querySelector(className).append(mainDiv);

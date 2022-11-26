@@ -1,6 +1,8 @@
 .box-layout-ennemie {
     background-color: rgba(255, 255, 255, 0.15);
     border-bottom: #05807b 5px double;
+    display: flex;
+    justify-content: center;
 }
 
 .box-layout-joueur {
@@ -66,19 +68,20 @@
 
 #nb-health {
     position: absolute;
-    top: 5%;
-    left: 32.9%;
+    top: 4.5%;
+    left: 32.3%;
 }
 
 #recruit-logo {
-    margin-left: 200px;
-    height: 4.5%;
-    width: 4.5%;
+    margin-left: 240px;
+    margin-top: -10px;
+    height: 3%;
+    width: 3%;
 }
 
 #name-ennemy {
     position: absolute;
-    top: 9.5%;
+    top: 8.5%;
     left: 48.1%;
 }
 
@@ -90,8 +93,8 @@
 
 #nb-mp {
     position: absolute;
-    top: 5%;
-    left: 65.1%;
+    top: 4.5%;
+    left: 64.8%;
 }
 
 #nb-cartes {
@@ -101,7 +104,7 @@
 #nb-cartes-text {
     position: absolute;
     top: 5%;
-    left: 97.7%;
+    left: 97%;
 }
 
 #nb-cartesMe {

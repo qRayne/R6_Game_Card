@@ -1,6 +1,7 @@
 import Cartes from "./Cartes.js";
 
 let dataGame = null;
+let errorData = null;
 
 const state = () => {
     fetch("ajax-game.php", { // Il faut créer cette page et son contrôleur appelle
@@ -10,6 +11,7 @@ const state = () => {
         .then(data => {
             checkGameState(data);
             dataGame = data;
+            console.log(dataGame);
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
 }
@@ -23,7 +25,7 @@ const statePlay = (action, uid, targetuid) => {
     } else if (action == "PLAY") {
         data.append("type", action);
         data.append("uid", uid);
-    } else {
+    } else if (action == "ATTACK") {
         data.append("type", action);
         data.append("uid", uid);
         data.append("targetuid", targetuid);
@@ -36,7 +38,7 @@ const statePlay = (action, uid, targetuid) => {
         })
         .then(response => response.json())
         .then(data => {
-            dataGame = data;
+            errorData = data;
         })
 };
 
@@ -99,14 +101,13 @@ const modifiyGameState = (data) => {
 const putCardInBoard = (uid) => {
     if (typeof uid == "number") {
         if (dataGame["yourTurn"] == true) {
-            if (errorsHandlers(dataGame)) {
-                dataGame["hand"].forEach(element => {
-                    if (element["uid"] == uid) {
-                        statePlay("PLAY", uid);
-                        Cartes.createElement(".box-layout-carte-joueur", element, uid);
-                    }
-                });
-            }
+            dataGame["hand"].forEach(element => {
+                if (element["uid"] == uid) {
+                    statePlay("PLAY", uid, '');
+                    Cartes.createElement(".box-layout-carte-joueur", element, uid);
+                    errorsHandlers(errorData, "Playing a card");
+                }
+            });
         }
     }
 }
@@ -114,65 +115,55 @@ const putCardInBoard = (uid) => {
 const attackCard = (uid, targetuid) => {
     if (typeof uid == "number") {
         if (dataGame["yourTurn"] == true) {
-            if (errorsHandlers(dataGame)) {
-                dataGame["hand"].forEach(element => {
-                    if (element["uid"] == uid && element["targetuid"] == targetuid)
-                        statePlay("PLAY", uid, targetuid);
-                });
-            }
+            dataGame["opponent"]["board"].forEach(element => {
+                if (element["uid"] == targetuid) {
+                    dataGame["board"].forEach(element => {
+                        if (element["uid"] == uid) {
+                            statePlay("ATTACK", uid, targetuid);
+                            errorsHandlers(errorData, "Attacking a card");
+                        }
+                    });
+                }
+            });
         }
     }
 }
-const errorsHandlers = (data) => {
-    let actionPossible = true;
+const errorsHandlers = (data, action) => {
     if (data != null) {
         if (typeof data !== "object") {
             if (data == "INVALID_KEY") {
                 document.querySelector(".error-message").innerHTML = "INVALID_KEY";
-                actionPossible = false;
             } else if (data == "INVALID_ACTION") {
                 document.querySelector(".error-message").innerHTML = "INVALID_ACTION";
-                actionPossible = false;
             } else if (data == "ACTION_IS_NOT_AN_OBJECT") {
                 document.querySelector(".error-message").innerHTML = "ACTION_IS_NOT_AN_OBJECT";
-                actionPossible = false;
             } else if (data == "NOT_ENOUGH_ENERGY") {
                 document.querySelector(".error-message").innerHTML = "NOT_ENOUGH_ENERGY";
-                actionPossible = false;
             } else if (data == "BOARD_IS_FULL") {
                 document.querySelector(".error-message").innerHTML = "BOARD_IS_FULL";
-                actionPossible = false;
             } else if (data == "CARD_NOT_IN_HAND") {
                 document.querySelector(".error-message").innerHTML = "CARD_NOT_IN_HAND";
-                actionPossible = false;
             } else if (data == "CARD_IS_SLEEPING") {
                 document.querySelector(".error-message").innerHTML = "CARD_IS_SLEEPING";
-                actionPossible = false;
             } else if (data == "MUST_ATTACK_TAUNT_FIRST") {
                 document.querySelector(".error-message").innerHTML = "MUST_ATTACK_TAUNT_FIRST";
-                actionPossible = false;
             } else if (data == "OPPONENT_CARD_NOT_FOUND") {
                 document.querySelector(".error-message").innerHTML = "OPPONENT_CARD_NOT_FOUND";
-                actionPossible = false;
             } else if (data == "OPPONENT_CARD_HAS_STEALTH") {
                 document.querySelector(".error-message").innerHTML = "OPPONENT_CARD_HAS_STEALTH";
-                actionPossible = false;
             } else if (data == "CARD_NOT_FOUND") {
                 document.querySelector(".error-message").innerHTML = "CARD_NOT_FOUND";
-                actionPossible = false;
             } else if (data == "ERROR_PROCESSING_ACTION") {
                 document.querySelector(".error-message").innerHTML = "ERROR_PROCESSING_ACTION";
-                actionPossible = false;
             } else if (data == "INTERNAL_ACTION_ERROR") {
                 document.querySelector(".error-message").innerHTML = "INTERNAL_ACTION_ERROR";
-                actionPossible = false;
             } else if (data == "HERO_POWER_ALREADY_USED") {
                 document.querySelector(".error-message").innerHTML = "HERO_POWER_ALREADY_USED";
-                actionPossible = false;
             }
+        } else {
+            document.querySelector(".error-message").innerHTML = "Ur " + action;
         }
     }
-    return actionPossible;
 }
 
 window.addEventListener("load", () => {

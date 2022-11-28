@@ -78,6 +78,10 @@
                 header("location:deck.php");
                 exit;
             }
+            else if (isset($_POST["btnStats"])){
+                header("location:stats.php");
+                exit;
+            }
             
             // retourne la clee avec l'url.
             $urlwithKey = $_SESSION["urlwithKey"];

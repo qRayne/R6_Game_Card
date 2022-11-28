@@ -73,6 +73,9 @@ const modifiyGameState = (data) => {
         document.querySelector("#nb-healthMe").innerHTML = data["hp"];
         document.querySelector("#nb-mpMe").innerHTML = data["mp"];
         document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
+        document.querySelector("#time").innerHTML = "Time left : " + data["remainingTurnTime"];
+        document.querySelector("#turn").innerHTML = "your turn : " + data["yourTurn"];
+
 
         // pour les cartes que j'ai dans les mains
         while (document.querySelector(".box-layout-joueur").firstChild) {

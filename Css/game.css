@@ -31,7 +31,7 @@
 .box-layout-carte-joueur {
     display: flex;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 120px;
 }
 
 .box-layout-ennemie,
@@ -89,6 +89,19 @@
     height: 50px;
 }
 
+.infoGame {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 12%;
+    left: 5%;
+    color: white;
+}
+
+#turn {
+    margin-top: 20px;
+}
+
 #health-logo {
     margin-left: 218px;
     height: 80px;
@@ -103,7 +116,7 @@
 
 #recruit-logo {
     margin-left: 240px;
-    margin-top: -10px;
+    /* margin-top:px; */
     height: 3%;
     width: 3%;
 }

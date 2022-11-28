@@ -65,6 +65,11 @@ $data = $action->execute();
         <button id="heropower" name="heropower">HERO POWER</button>
     </div>
 
+    <div class="infoGame">
+        <p id="time"></p>
+        <p id="turn"></p>
+    </div>
+
 </body>
 
 </html>

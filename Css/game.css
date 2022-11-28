@@ -60,6 +60,35 @@
     color: white;
 }
 
+.buttonendturn {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0.5%;
+    right: 1%;
+}
+
+.buttonendturn button {
+    background-color: #0e1111;
+    color: #05807b;
+    width: 100px;
+    height: 50px;
+}
+
+.details-game {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: white;
+}
+
+.details-game img {
+    width: 50px;
+    height: 50px;
+}
+
 #health-logo {
     margin-left: 218px;
     height: 80px;
@@ -68,7 +97,7 @@
 
 #nb-health {
     position: absolute;
-    top: 4.5%;
+    top: 4%;
     left: 32.3%;
 }
 
@@ -93,7 +122,7 @@
 
 #nb-mp {
     position: absolute;
-    top: 4.5%;
+    top: 4%;
     left: 64.8%;
 }
 
@@ -103,36 +132,24 @@
 
 #nb-cartes-text {
     position: absolute;
-    top: 5%;
-    left: 97%;
-}
-
-#nb-cartesMe {
-    padding-top: 80px;
-}
-
-#mp-logoMe {
-    padding-top: 90px;
+    top: 4%;
+    left: 97.1%;
 }
 
 #nb-healthMe {
     position: absolute;
-    left: 3.5%;
-    top: 4%;
+    top: 9%;
+    left: 35%;
 }
 
 #nb-mpMe {
     position: absolute;
-    left: 4.5%;
-    top: 44.5%;
+    top: 46%;
+    left: 35%;
 }
 
 #nb-cartes-textMe {
     position: absolute;
-    left: 3.5%;
-    top: 85%;
-}
-
-#surrender {
-    margin-top: 10px;
+    top: 83%;
+    left: 35%;
 }

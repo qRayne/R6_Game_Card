@@ -11,7 +11,7 @@ const state = () => {
         .then(data => {
             checkGameState(data);
             dataGame = data;
-            console.log(dataGame);
+            // console.log(dataGame);
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
 }
@@ -22,9 +22,12 @@ const statePlay = (action, uid, targetuid) => {
 
     if (action == "END_TURN" || action == "SURRENDER" || action == "HERO_POWER") {
         data.append("type", action);
+        data.append("uid", '');
+        data.append("targetuid", '');
     } else if (action == "PLAY") {
         data.append("type", action);
         data.append("uid", uid);
+        data.append("targetuid", '');
     } else if (action == "ATTACK") {
         data.append("type", action);
         data.append("uid", uid);
@@ -61,15 +64,15 @@ const modifiyGameState = (data) => {
     if (data != null) {
         // pour les textes de base -> null besoin de faire des append child -> on peut injecter directement notre data avec innerHtml
         document.querySelector(".error-message").innerHTML = "";
-        document.querySelector("#name-ennemy").innerHTML = data["opponent"]["username"];
+        // document.querySelector("#name-ennemy").innerHTML = data["opponent"]["username"];
         document.querySelector("#nb-health").innerHTML = data["opponent"]["hp"];
         document.querySelector("#nb-mp").innerHTML = data["opponent"]["mp"];
         document.querySelector("#nb-cartes-text").innerHTML = data["opponent"]["remainingCardsCount"];
 
         //mes donnees
-        // document.querySelector("#nb-healthMe").innerHTML = data["hp"];
-        // document.querySelector("#nb-mpMe").innerHTML = data["mp"];
-        // document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
+        document.querySelector("#nb-healthMe").innerHTML = data["hp"];
+        document.querySelector("#nb-mpMe").innerHTML = data["mp"];
+        document.querySelector("#nb-cartes-textMe").innerHTML = data["remainingCardsCount"];
 
         // pour les cartes que j'ai dans les mains
         while (document.querySelector(".box-layout-joueur").firstChild) {
@@ -105,7 +108,7 @@ const putCardInBoard = (uid) => {
                 if (element["uid"] == uid) {
                     statePlay("PLAY", uid, '');
                     Cartes.createElement(".box-layout-carte-joueur", element, uid);
-                    errorsHandlers(errorData, "Playing a card");
+                    errorsHandlers(errorData);
                 }
             });
         }
@@ -120,7 +123,7 @@ const attackCard = (uid, targetuid) => {
                     dataGame["board"].forEach(element => {
                         if (element["uid"] == uid) {
                             statePlay("ATTACK", uid, targetuid);
-                            errorsHandlers(errorData, "Attacking a card");
+                            errorsHandlers(errorData);
                         }
                     });
                 }
@@ -128,7 +131,7 @@ const attackCard = (uid, targetuid) => {
         }
     }
 }
-const errorsHandlers = (data, action) => {
+const errorsHandlers = (data) => {
     if (data != null) {
         if (typeof data !== "object") {
             if (data == "INVALID_KEY") {
@@ -160,8 +163,6 @@ const errorsHandlers = (data, action) => {
             } else if (data == "HERO_POWER_ALREADY_USED") {
                 document.querySelector(".error-message").innerHTML = "HERO_POWER_ALREADY_USED";
             }
-        } else {
-            document.querySelector(".error-message").innerHTML = "Ur " + action;
         }
     }
 }
@@ -171,12 +172,18 @@ window.addEventListener("load", () => {
     document.querySelector(".box-layout-joueur").addEventListener('click', (e) => {
         putCardInBoard(parseInt(e.target.id));
     });
-    // document.querySelector("#endturn").addEventListener('click', () => {
-    //     statePlay("END_TURN");
-    // });
-    // document.querySelector("#surrender").addEventListener('click', () => {
-    //     statePlay("SURRENDER");
-    // });
+
+    document.querySelector("#endturn").addEventListener('click', () => {
+        statePlay("END_TURN");
+    });
+
+    document.querySelector("#surrender").addEventListener('click', () => {
+        statePlay("SURRENDER");
+    });
+
+    document.querySelector("#heropower").addEventListener('click', () => {
+        statePlay("HERO_POWER");
+    });
 
     document.querySelector(".box-layout-carte-joueur").addEventListener('click', (e) => {
         let uid = e.target.id;

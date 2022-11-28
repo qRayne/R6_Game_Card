@@ -32,7 +32,7 @@ $data = $action->execute();
         <img id="health-logo" src="images/health.jpg" alt="health-logo">
         <p id="nb-health"></p>
         <img id="recruit-logo" src="images/logo.png" alt="default image">
-        <p id="name-ennemy"></p>
+        <!-- <p id="name-ennemy"></p> -->
         <img id="mp-logo" src="images/health.jpg" alt="mp-image">
         <p id="nb-mp"></p>
         <img id="nb-cartes" src="images/back-card.jpg" alt="r6-nbCards">
@@ -40,6 +40,7 @@ $data = $action->execute();
     </div>
 
     <div class="box-layout-carte-ennemie" method="post">
+
     </div>
 
     <div class="box-layout-carte-joueur" method="post">
@@ -47,18 +48,22 @@ $data = $action->execute();
     </div>
 
     <div class="box-layout-joueur" method="post">
-        <!-- <p id="nb-healthMe"></p>
+    </div>
+
+    <div class="details-game">
+        <p id="nb-healthMe"></p>
         <img id="health-logoMe" src="images/health.jpg" alt="mp-image"><br>
         <p id="nb-mpMe"></p>
         <img id="mp-logoMe" src="images/health.jpg" alt="mp-image"><br>
         <p id="nb-cartes-textMe"></p>
-        <img id="nb-cartesMe" src="images/back-card.jpg" alt="r6-nbCards"> -->
+        <img id="nb-cartesMe" src="images/back-card.jpg" alt="r6-nbCards">
     </div>
 
-    <!-- <div class="buttonendturn" method="post">
-        <button id="endturn" name="endturn">END TURN </button>
-        <button id="surrender" name="surrender">SURRENDER</button>
-    </div> -->
+    <div class="buttonendturn">
+        <button id="endturn" name="endturn" >END TURN </button> <br>
+        <button id="surrender" name="surrender">SURRENDER</button> <br>
+        <button id="heropower" name="heropower">HERO POWER</button>
+    </div>
 
 </body>
 

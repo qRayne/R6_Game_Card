@@ -11,10 +11,6 @@ class LoginAction extends CommonAction
 
     protected function executeAction()
     {
-        // $data = [];
-        // $data["username"] = "Rayane";
-        // $data["password"] = "Ry09112002";
-
         if (isset($_POST["username"]) && isset($_POST["password"])){
             $data = [];
             $data["username"] = $_POST["username"];

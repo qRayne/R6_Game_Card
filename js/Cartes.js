@@ -27,7 +27,14 @@ export default class Cartes {
         atkDiv.id = idCarte;
 
         let mecDiv = document.createElement("div");
-        let mecNode = document.createTextNode(element["mechanics"][0]);
+        let mecNode = "";
+
+        if (element["mechanics"][0] == null) {
+            mecNode = document.createTextNode("Minion");
+        } else {
+            mecNode = document.createTextNode(element["mechanics"][0]);
+        }
+
         mecDiv.id = idCarte;
 
         costDiv.append(costNode);

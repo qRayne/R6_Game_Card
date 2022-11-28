@@ -24,6 +24,7 @@ $data = $action->execute();
         <form action="chat.php" method="POST">
             <input type="submit" name="btnPlay" value="PLAY">
             <input type="submit" name="btnTraining" value="TRAINING">
+            <input type="submit" name="btnDeck" value="DECK">
             <input type="submit" name="btnQuit" value="QUIT">
         </form>
     </div>

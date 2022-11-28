@@ -74,7 +74,11 @@
                     exit;
                 }
             }
-
+            else if (isset($_POST["btnDeck"])){
+                header("location:deck.php");
+                exit;
+            }
+            
             // retourne la clee avec l'url.
             $urlwithKey = $_SESSION["urlwithKey"];
             return compact("urlwithKey");

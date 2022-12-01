@@ -1,5 +1,7 @@
 <?php
 require_once("action/CommonAction.php");
+require_once("DAO/StatsDAO.php");
+
 
 class StatsAction extends CommonAction
 {
@@ -11,8 +13,8 @@ class StatsAction extends CommonAction
 
     protected function executeAction()
     {
-        // $key = $_SESSION["keyOnly"];
-        // $src = "src = https://magix.apps-de-cours.com/server/#/deck/" . $key;
-        // return compact("src");
+        $countCartes = StatsDAO::getCountCartes();
+        $countTotal = StatsDAO::getCountAllCartes();
+        return compact("countCartes","countTotal");
     }
 }

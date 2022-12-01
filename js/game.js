@@ -45,6 +45,18 @@ const statePlay = (action, uid, targetuid) => {
         })
 };
 
+const addCardsDatabase = (id) => {
+    let data = new FormData();
+
+    console.log(id);
+    data.append("id", id);
+
+    fetch("ajax-stats.php", {
+        method: "post",
+        body: data
+    });
+}
+
 const checkGameState = (data) => {
 
     if (data != null) {
@@ -111,7 +123,7 @@ const putCardInBoard = (uid) => {
                 if (element["uid"] == uid) {
                     statePlay("PLAY", uid, '');
                     Cartes.createElement(".box-layout-carte-joueur", element, uid);
-                    errorsHandlers(errorData);
+                    errorsHandler(errorData);
                 }
             });
         }
@@ -126,7 +138,7 @@ const attackCard = (uid, targetuid) => {
                     dataGame["board"].forEach(element => {
                         if (element["uid"] == uid) {
                             statePlay("ATTACK", uid, targetuid);
-                            errorsHandlers(errorData);
+                            errorsHandler(errorData);
                         }
                     });
                 }
@@ -134,7 +146,7 @@ const attackCard = (uid, targetuid) => {
         }
     }
 }
-const errorsHandlers = (data) => {
+const errorsHandler = (data) => {
     if (data != null) {
         if (typeof data !== "object") {
             if (data == "INVALID_KEY") {

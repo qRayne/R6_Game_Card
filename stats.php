@@ -16,7 +16,21 @@ $data = $action->execute();
     <link rel="stylesheet" href="Css/global.css">
 </head>
 
-<body class="staticBackground">
+<body class="staticBackground" style="color:white">
+    <?php
+        if (!empty($data["countCartes"])){
+            foreach ($data["countCartes"] as $key => $value) {
+                ?>
+                <div><?= $value["id_carte"] ?></div>
+                <?php
+                foreach ($data["countTotal"] as $key => $value2 ) {
+                }
+                ?>
+                <div><?=($value["count"] / $value2["count"]) * 100 ?></div>
+                <?php
+            }
+        }
+    ?>
     
 </body>
 </html>

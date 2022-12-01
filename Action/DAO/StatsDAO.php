@@ -4,25 +4,37 @@
     
     class StatsDAO{
 
-        public static function getCartes(){ 
-            // $connection = Connection::getConnection();
+        public static function getCountCartes(){ 
+           $connection = Connection::getConnection();
 
-            // $statement = $connection->prepare("SELECT * FROM stack_answers");
-            // $statement->setFetchMode(PDO::FETCH_ASSOC);
-            // $statement->execute();
+            $statement = $connection->prepare("SELECT id_carte, COUNT(*) FROM cartes GROUP BY id_carte;");
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
 
-            // $result = $statement->fetchAll();
+            $result = $statement->fetchAll();
 
-            // return $result;
+            return $result;
         }
 
-        public static function addCarte(){
-            // $connection = Connection::getConnection();
+        public static function getCountAllCartes(){
 
-            // $statement = $connection->prepare("INSERT INTO stack_answers (author,answer) VALUES (?,?)"); // on insert dans la tables les valeurs qu'on passe en paramètre
-            // $statement->bindParam(1,$author);
-            // $statement->bindParam(2,$answer);
-            // $statement->execute();
+            $connection = Connection::getConnection();
+
+            $statement = $connection->prepare("SELECT COUNT(*) FROM cartes;");
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $statement->execute();
+
+            $result = $statement->fetchAll();
+
+            return $result;
+        }
+
+        public static function addCarte($idCarte){
+            $connection = Connection::getConnection();
+
+            $statement = $connection->prepare("INSERT INTO cartes (id_carte) VALUES (?)"); // on insert dans la tables les valeurs qu'on passe en paramètre
+            $statement->bindParam(1,$idCarte);
+            $statement->execute();
         }
         
     }

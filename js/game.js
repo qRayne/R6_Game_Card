@@ -71,6 +71,9 @@ const checkGameState = (data) => {
     }
 }
 
+
+// il faut attaquer aussi le perso en cliquant sur le logo image
+
 const modifiyGameState = (data) => {
 
     if (data != null) {
@@ -122,7 +125,7 @@ const putCardInBoard = (uid) => {
             dataGame["hand"].forEach(element => {
                 if (element["uid"] == uid) {
                     statePlay("PLAY", uid, '');
-                    Cartes.createElement(".box-layout-carte-joueur", element, uid);
+                    Cartes.createElement(".box-layout-carte-joueur", element, uid, element["state"]);
                     errorsHandler(errorData);
                 }
             });
@@ -205,6 +208,9 @@ window.addEventListener("load", () => {
         document.querySelector(".box-layout-carte-ennemie").addEventListener('click', (e) => {
             let targeUid = e.target.id;
             attackCard(parseInt(uid), parseInt(targeUid));
+        })
+        document.querySelector("#recruit-logo").addEventListener('click', () => {
+            statePlay("ATTACK", parseInt(uid), 0);
         })
     })
 

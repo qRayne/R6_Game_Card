@@ -10,7 +10,7 @@ export default class Cartes {
     }
 
 
-    static createElement(className, element, idCarte) {
+    static createElement(className, element, idCarte, state) {
         let mainDiv = document.createElement("div");
         mainDiv.id = idCarte;
 
@@ -46,6 +46,13 @@ export default class Cartes {
         mainDiv.append(hpDiv);
         mainDiv.append(atkDiv);
         mainDiv.append(mecDiv);
+
+        if (state != '') {
+            let stateDiv = document.createElement("div");
+            let stateNode = document.createTextNode(element["state"]);
+            stateDiv.append(stateNode);
+            mainDiv.append(stateDiv);
+        }
 
         mainDiv.style.height = "160px";
         mainDiv.style.width = "100px";

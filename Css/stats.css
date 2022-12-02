@@ -1,0 +1,38 @@
+.stats {
+    color: white;
+    background: transparent;
+    text-align: center;
+    border: #05807b 5px solid;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.staticBackground2 {
+    background-image: url('../images/vigil.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#imageLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 5%;
+    height: 5%;
+}
+
+#deleteButton {
+    position: absolute;
+    color: white;
+    width: 100px;
+    height: 50px;
+    background: #05807b;
+    bottom: 20%;
+    left: 47.5%;
+}

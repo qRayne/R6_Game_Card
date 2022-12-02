@@ -13,6 +13,11 @@ class StatsAction extends CommonAction
 
     protected function executeAction()
     {
+        if (isset($_POST["delete"])){
+            StatsDAO::deleteContent();
+            header("location:chat.php");
+            exit;
+        }
         $countCartes = StatsDAO::getCountCartes();
         $countTotal = StatsDAO::getCountAllCartes();
         return compact("countCartes","countTotal");

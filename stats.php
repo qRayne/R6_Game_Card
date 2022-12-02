@@ -14,58 +14,34 @@ $data = $action->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stats</title>
     <link rel="stylesheet" href="Css/global.css">
+    <link rel="stylesheet" href="Css/stats.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="staticBackground" style="color:white">
-    <?php
-        if (!empty($data["countCartes"])){
+<body class="staticBackground2">
+
+    <img id= "imageLogo" src="images/r6.gif" alt="">
+
+    <form action="" method="POST">
+        <input id="deleteButton" type="submit" name="delete" value="DELETE">
+
+    <div class="stats">
+        <?php
+        if (!empty($data["countCartes"])) {
             foreach ($data["countCartes"] as $key => $value) {
-                ?>
-                <div><?= $value["id_carte"] ?></div>
+        ?>
+                <div>la carte avec le id : <?= $value["id_carte"] ?></div>
                 <?php
-                foreach ($data["countTotal"] as $key => $value2 ) {
+                foreach ($data["countTotal"] as $key => $value2) {
                 }
                 ?>
-                <div><?=($value["count"] / $value2["count"]) * 100 ?></div>
-                <?php
+                <div ><?= ($value["count"] / $value2["count"]) * 100 ?> % </div>
+        <?php
             }
         }
-    ?>
+        ?>
+    </div>
 
-    <canvas id="pie-chart"></canvas>
-        <script>
-            const data = {
-                labels: ['Simple', 'Double', 'Suite'],
-                datasets: [{
-                    label: 'Types de chambre',
-                    data: [50, 50, 100],
-                    color: "#fff",
-                    backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
-                    ],
-                }]
-            };
-
-            const config = {
-                type: 'pie',
-                data: data,
-                options: {
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: 'white'
-                            }
-                        }
-                    }
-                }
-            };
-
-            new Chart(document.getElementById('pie-chart'), config);
-
-            </script>
-    
 </body>
+
 </html>

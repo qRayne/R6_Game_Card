@@ -37,4 +37,10 @@
             $statement->execute();
         }
         
+        public static function deleteContent(){
+            $connection = Connection::getConnection();
+
+            $statement = $connection->prepare("DELETE FROM cartes");
+            $statement->execute();
+        }
     }

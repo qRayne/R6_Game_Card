@@ -19,9 +19,6 @@ $data = $action->execute();
 </head>
 
 <body class="staticBackground2">
-
-    <img id= "imageLogo" src="images/r6.gif" alt="">
-
     <form action="" method="POST">
         <input id="deleteButton" type="submit" name="delete" value="DELETE">
 

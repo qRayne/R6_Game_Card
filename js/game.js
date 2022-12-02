@@ -43,7 +43,6 @@ const statePlay = (action, uid, targetuid) => {
         .then(response => response.json())
         .then(data => {
             errorData = data;
-            errorsHandler(errorData);
         })
 };
 
@@ -127,7 +126,7 @@ const putCardInBoard = (uid) => {
             dataGame["hand"].forEach(element => {
                 if (element["uid"] == uid) {
                     statePlay("PLAY", uid, '');
-                    if (booleanError != true) {
+                    if (booleanError == false) {
                         Cartes.createElement(".box-layout-carte-joueur", element, uid, element["state"]);
                         addCardsDatabase(element["id"]);
                     }
@@ -145,6 +144,7 @@ const attackCard = (uid, targetuid) => {
                     dataGame["board"].forEach(element => {
                         if (element["uid"] == uid) {
                             statePlay("ATTACK", uid, targetuid);
+                            errorsHandler(errorData);
                         }
                     });
                 }

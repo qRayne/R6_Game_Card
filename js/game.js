@@ -2,6 +2,7 @@ import Cartes from "./Cartes.js";
 
 let dataGame = null;
 let errorData = null;
+let booleanError = false;
 
 const state = () => {
     fetch("ajax-game.php", { // Il faut créer cette page et son contrôleur appelle
@@ -42,6 +43,7 @@ const statePlay = (action, uid, targetuid) => {
         .then(response => response.json())
         .then(data => {
             errorData = data;
+            errorsHandler(errorData);
         })
 };
 
@@ -106,15 +108,15 @@ const modifiyGameState = (data) => {
         }
 
         data["hand"].forEach(element => {
-            Cartes.createElement(".box-layout-joueur", element, element["uid"]);
+            Cartes.createElement(".box-layout-joueur", element, element["uid"], element["state"]);
         })
 
         data["board"].forEach(element => {
-            Cartes.createElement(".box-layout-carte-joueur", element, element["uid"]);
+            Cartes.createElement(".box-layout-carte-joueur", element, element["uid"], element["state"]);
         })
 
         data["opponent"]["board"].forEach(element => {
-            Cartes.createElement(".box-layout-carte-ennemie", element, element["uid"]);
+            Cartes.createElement(".box-layout-carte-ennemie", element, element["uid"], element["state"]);
         })
     }
 }
@@ -125,8 +127,10 @@ const putCardInBoard = (uid) => {
             dataGame["hand"].forEach(element => {
                 if (element["uid"] == uid) {
                     statePlay("PLAY", uid, '');
-                    Cartes.createElement(".box-layout-carte-joueur", element, uid, element["state"]);
-                    errorsHandler(errorData);
+                    if (booleanError != true) {
+                        Cartes.createElement(".box-layout-carte-joueur", element, uid, element["state"]);
+                        addCardsDatabase(element["id"]);
+                    }
                 }
             });
         }
@@ -141,7 +145,6 @@ const attackCard = (uid, targetuid) => {
                     dataGame["board"].forEach(element => {
                         if (element["uid"] == uid) {
                             statePlay("ATTACK", uid, targetuid);
-                            errorsHandler(errorData);
                         }
                     });
                 }
@@ -154,35 +157,50 @@ const errorsHandler = (data) => {
         if (typeof data !== "object") {
             if (data == "INVALID_KEY") {
                 document.querySelector(".error-message").innerHTML = "INVALID_KEY";
+                booleanError = true;
             } else if (data == "INVALID_ACTION") {
                 document.querySelector(".error-message").innerHTML = "INVALID_ACTION";
+                booleanError = true;
             } else if (data == "ACTION_IS_NOT_AN_OBJECT") {
                 document.querySelector(".error-message").innerHTML = "ACTION_IS_NOT_AN_OBJECT";
+                booleanError = true;
             } else if (data == "NOT_ENOUGH_ENERGY") {
                 document.querySelector(".error-message").innerHTML = "NOT_ENOUGH_ENERGY";
+                booleanError = true;
             } else if (data == "BOARD_IS_FULL") {
                 document.querySelector(".error-message").innerHTML = "BOARD_IS_FULL";
+                booleanError = true;
             } else if (data == "CARD_NOT_IN_HAND") {
                 document.querySelector(".error-message").innerHTML = "CARD_NOT_IN_HAND";
+                booleanError = true;
             } else if (data == "CARD_IS_SLEEPING") {
                 document.querySelector(".error-message").innerHTML = "CARD_IS_SLEEPING";
+                booleanError = true;
             } else if (data == "MUST_ATTACK_TAUNT_FIRST") {
                 document.querySelector(".error-message").innerHTML = "MUST_ATTACK_TAUNT_FIRST";
+                booleanError = true;
             } else if (data == "OPPONENT_CARD_NOT_FOUND") {
                 document.querySelector(".error-message").innerHTML = "OPPONENT_CARD_NOT_FOUND";
+                booleanError = true;
             } else if (data == "OPPONENT_CARD_HAS_STEALTH") {
                 document.querySelector(".error-message").innerHTML = "OPPONENT_CARD_HAS_STEALTH";
+                booleanError = true;
             } else if (data == "CARD_NOT_FOUND") {
                 document.querySelector(".error-message").innerHTML = "CARD_NOT_FOUND";
+                booleanError = true;
             } else if (data == "ERROR_PROCESSING_ACTION") {
                 document.querySelector(".error-message").innerHTML = "ERROR_PROCESSING_ACTION";
+                booleanError = true;
             } else if (data == "INTERNAL_ACTION_ERROR") {
                 document.querySelector(".error-message").innerHTML = "INTERNAL_ACTION_ERROR";
+                booleanError = true;
             } else if (data == "HERO_POWER_ALREADY_USED") {
                 document.querySelector(".error-message").innerHTML = "HERO_POWER_ALREADY_USED";
+                booleanError = true;
             }
         }
     }
+    return booleanError;
 }
 
 window.addEventListener("load", () => {

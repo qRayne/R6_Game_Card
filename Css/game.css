@@ -11,6 +11,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    height: 23%;
+    position: fixed;
+    bottom: 0;
 }
 
 .box-layout-cartes {
@@ -31,7 +34,7 @@
 .box-layout-carte-joueur {
     display: flex;
     justify-content: center;
-    margin-top: 120px;
+    margin-top: 50px;
 }
 
 .box-layout-ennemie,
@@ -50,12 +53,6 @@
     width: 50px;
 }
 
-.box-layout-joueur {
-    height: 20%;
-    position: fixed;
-    bottom: 0;
-}
-
 .infos-game {
     color: white;
 }
@@ -64,7 +61,7 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    bottom: 0.5%;
+    bottom: 2%;
     right: 1%;
 }
 
@@ -84,9 +81,18 @@
     color: white;
 }
 
-.details-game img {
+#health-logoMe,
+#mp-logoMe {
     width: 50px;
     height: 50px;
+    padding-left: 5px;
+}
+
+#nb-cartesMe {
+    width: 50px;
+    height: 70px;
+    padding-left: 5px;
+    padding-bottom: 10px;
 }
 
 .infoGame {
@@ -116,7 +122,6 @@
 
 #recruit-logo {
     margin-left: 240px;
-    /* margin-top:px; */
     height: 3%;
     width: 3%;
 }
@@ -151,18 +156,18 @@
 
 #nb-healthMe {
     position: absolute;
-    top: 9%;
-    left: 35%;
+    top: 8%;
+    left: 47%;
 }
 
 #nb-mpMe {
     position: absolute;
-    top: 46%;
-    left: 40%;
+    top: 40%;
+    left: 47%;
 }
 
 #nb-cartes-textMe {
     position: absolute;
-    top: 83%;
-    left: 35%;
+    top: 75%;
+    left: 39%;
 }

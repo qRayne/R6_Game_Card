@@ -20,7 +20,7 @@
 
             $connection = Connection::getConnection();
 
-            $statement = $connection->prepare("SELECT COUNT(*) FROM cartes;");
+            $statement = $connection->prepare("SELECT COUNT(*) FROM cartes");
             $statement->setFetchMode(PDO::FETCH_ASSOC);
             $statement->execute();
 

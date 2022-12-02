@@ -35,13 +35,13 @@ $data = $action->execute();
                 foreach ($data["countTotal"] as $key => $value2) {
                 }
                 ?>
-                <div ><?= ($value["count"] / $value2["count"]) * 100 ?> % </div>
+                <div><?= ($value["count"] / $value2["count"]) * 100 ?> % </div>
         <?php
             }
         }
-        ?>
+            ?>
+            <div> le nombre total de cartes jouées : <?= $data["countTotal"][0]["count"]?></div>
     </div>
-
 </body>
 
 </html>

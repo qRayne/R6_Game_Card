@@ -15,15 +15,15 @@ export default class Cartes {
         mainDiv.id = idCarte;
 
         let costDiv = document.createElement("div");
-        let costNode = document.createTextNode("Cost " + element["cost"]);
+        let costNode = document.createTextNode("COST : " + element["cost"]);
         costDiv.id = idCarte;
 
         let hpDiv = document.createElement("div");
-        let hpNode = document.createTextNode("Hp " + element["hp"]);
+        let hpNode = document.createTextNode("HP : " + element["hp"]);;
         hpDiv.id = idCarte;
 
         let atkDiv = document.createElement("div");
-        let atkNode = document.createTextNode("Atk " + element["atk"]);
+        let atkNode = document.createTextNode("ATK : " + element["atk"]);
         atkDiv.id = idCarte;
 
         let mecDiv = document.createElement("div");
@@ -47,22 +47,25 @@ export default class Cartes {
         mainDiv.append(atkDiv);
         mainDiv.append(mecDiv);
 
-        if (state != '') {
+        if (state != undefined) {
             let stateDiv = document.createElement("div");
             let stateNode = document.createTextNode(element["state"]);
             stateDiv.append(stateNode);
             mainDiv.append(stateDiv);
         }
 
-        mainDiv.style.height = "160px";
-        mainDiv.style.width = "100px";
+        mainDiv.style.height = "180px";
+        mainDiv.style.width = "130px";
         mainDiv.style.textAlign = "center";
         mainDiv.style.backgroundColor = "#0e1111";
+        mainDiv.style.backgroundImage = "url(images/logo.png)";
+        mainDiv.style.backgroundSize = "contain";
+        mainDiv.style.backgroundRepeat = "no-repeat";
         mainDiv.style.border = "#05807b 5px solid";
         mainDiv.style.opacity = "0.8";
-        mainDiv.style.margin = "20px";
-        mainDiv.style.marginTop = "10px";
+        mainDiv.style.margin = "10px 20px";
         mainDiv.style.color = "white";
+        mainDiv.style.fontWeight = "500";
 
         document.querySelector(className).append(mainDiv);
     }

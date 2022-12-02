@@ -24,18 +24,18 @@ $data = $action->execute();
     </div>
 
     <div class="box-layout-ennemie">
-        <img src="images/back-card.jpg" alt="r6-card">
-        <img src="images/back-card.jpg" alt="r6-card">
-        <img src="images/back-card.jpg" alt="r6-card">
-        <img src="images/back-card.jpg" alt="r6-card">
-        <img src="images/back-card.jpg" alt="r6-card">
+        <img src="images/back-card-initial.jpg" alt="r6-card">
+        <img src="images/back-card-initial.jpg" alt="r6-card">
+        <img src="images/back-card-initial.jpg" alt="r6-card">
+        <img src="images/back-card-initial.jpg" alt="r6-card">
+        <img src="images/back-card-initial.jpg" alt="r6-card">
         <img id="health-logo" src="images/health.jpg" alt="health-logo">
         <p id="nb-health"></p>
         <img id="recruit-logo" src="images/logo.png" alt="default image">
         <!-- <p id="name-ennemy"></p> -->
         <img id="mp-logo" src="images/health.jpg" alt="mp-image">
         <p id="nb-mp"></p>
-        <img id="nb-cartes" src="images/back-card.jpg" alt="r6-nbCards">
+        <img id="nb-cartes" src="images/back-card-initial.jpg" alt="r6-nbCards">
         <p id="nb-cartes-text"></p>
     </div>
 
@@ -56,7 +56,7 @@ $data = $action->execute();
         <p id="nb-mpMe"></p>
         <img id="mp-logoMe" src="images/health.jpg" alt="mp-image"><br>
         <p id="nb-cartes-textMe"></p>
-        <img id="nb-cartesMe" src="images/back-card.jpg" alt="r6-nbCards">
+        <img id="nb-cartesMe" src="images/back-card-initial.jpg" alt="r6-nbCards">
     </div>
 
     <div class="buttonendturn">

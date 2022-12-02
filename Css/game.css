@@ -1,3 +1,7 @@
+* {
+    font-weight: 600;
+}
+
 .box-layout-ennemie {
     background-color: rgba(255, 255, 255, 0.15);
     border-bottom: #05807b 5px double;
@@ -81,6 +85,15 @@
     color: white;
 }
 
+.infoGame {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 12%;
+    left: 5%;
+    color: white;
+}
+
 #health-logoMe,
 #mp-logoMe {
     width: 50px;
@@ -95,15 +108,6 @@
     padding-bottom: 10px;
 }
 
-.infoGame {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    bottom: 12%;
-    left: 5%;
-    color: white;
-}
-
 #turn {
     margin-top: 20px;
 }
@@ -116,7 +120,7 @@
 
 #nb-health {
     position: absolute;
-    top: 4%;
+    top: 4.4%;
     left: 32.3%;
 }
 
@@ -128,8 +132,14 @@
 
 #name-ennemy {
     position: absolute;
-    top: 8.5%;
-    left: 48.1%;
+    top: 4.4%;
+    left: 44.5%;
+}
+
+#ennemy-description {
+    position: absolute;
+    top: 4.4%;
+    left: 51.6%;
 }
 
 #mp-logo {
@@ -140,7 +150,7 @@
 
 #nb-mp {
     position: absolute;
-    top: 4%;
+    top: 4.4%;
     left: 64.8%;
 }
 
@@ -150,14 +160,14 @@
 
 #nb-cartes-text {
     position: absolute;
-    top: 4%;
+    top: 4.4%;
     left: 97.1%;
 }
 
 #nb-healthMe {
     position: absolute;
     top: 8%;
-    left: 47%;
+    left: 40%;
 }
 
 #nb-mpMe {

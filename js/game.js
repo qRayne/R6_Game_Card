@@ -1,7 +1,6 @@
 import Cartes from "./Cartes.js";
 
 let dataGame = null;
-let errorData = null;
 let booleanError = false;
 
 const state = () => {
@@ -12,7 +11,7 @@ const state = () => {
         .then(data => {
             checkGameState(data);
             dataGame = data;
-            // console.log(dataGame);
+            console.log(data);
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
 }
@@ -42,14 +41,18 @@ const statePlay = (action, uid, targetuid) => {
         })
         .then(response => response.json())
         .then(data => {
-            errorData = data;
+            if (data != null) {
+                if (typeof data !== "object") {
+                    document.querySelector(".error-message").innerHTML = data;
+                    booleanError = true;
+                }
+            }
         })
 };
 
 const addCardsDatabase = (id) => {
     let data = new FormData();
 
-    console.log(id);
     data.append("id", id);
 
     fetch("ajax-stats.php", {
@@ -64,9 +67,9 @@ const checkGameState = (data) => {
         if (data == "WAITING")
             document.querySelector(".error-message").innerHTML = "WAITING";
         else if (data == "LAST_GAME_WON")
-            window.location.href = "chat.php";
+            endingGame("LAST_GAME_WON")
         else if (data == "LAST_GAME_LOST")
-            window.location.href = "chat.php";
+            endingGame("LAST_GAME_LOST")
         else
             modifiyGameState(data);
     }
@@ -74,13 +77,13 @@ const checkGameState = (data) => {
 
 
 // il faut attaquer aussi le perso en cliquant sur le logo image
-
 const modifiyGameState = (data) => {
 
     if (data != null) {
         // pour les textes de base -> null besoin de faire des append child -> on peut injecter directement notre data avec innerHtml
         document.querySelector(".error-message").innerHTML = "";
-        // document.querySelector("#name-ennemy").innerHTML = data["opponent"]["username"];
+        document.querySelector("#name-ennemy").innerHTML = data["opponent"]["username"];
+        document.querySelector("#ennemy-description").innerHTML = data["opponent"]["welcomeText"];
         document.querySelector("#nb-health").innerHTML = data["opponent"]["hp"];
         document.querySelector("#nb-mp").innerHTML = data["opponent"]["mp"];
         document.querySelector("#nb-cartes-text").innerHTML = data["opponent"]["remainingCardsCount"];
@@ -120,15 +123,25 @@ const modifiyGameState = (data) => {
     }
 }
 
+const endingGame = (result) => {
+    if (result == "LAST_GAME_WON")
+        document.querySelector(".error-message").innerHTML = "U WON THE GAME";
+    else if (result == "LAST_GAME_LOST")
+        document.querySelector(".error-message").innerHTML = "U LOST THE GAME";
+
+    setTimeout(function() { location.href = "chat.php" }, 4000);
+}
+
 const putCardInBoard = (uid) => {
     if (typeof uid == "number") {
         if (dataGame["yourTurn"] == true) {
             dataGame["hand"].forEach(element => {
                 if (element["uid"] == uid) {
                     statePlay("PLAY", uid, '');
-                    if (booleanError == false) {
+                    if (booleanError != true) {
                         Cartes.createElement(".box-layout-carte-joueur", element, uid, element["state"]);
                         addCardsDatabase(element["id"]);
+                        booleanError = false;
                     }
                 }
             });
@@ -144,63 +157,12 @@ const attackCard = (uid, targetuid) => {
                     dataGame["board"].forEach(element => {
                         if (element["uid"] == uid) {
                             statePlay("ATTACK", uid, targetuid);
-                            errorsHandler(errorData);
                         }
                     });
                 }
             });
         }
     }
-}
-const errorsHandler = (data) => {
-    if (data != null) {
-        if (typeof data !== "object") {
-            if (data == "INVALID_KEY") {
-                document.querySelector(".error-message").innerHTML = "INVALID_KEY";
-                booleanError = true;
-            } else if (data == "INVALID_ACTION") {
-                document.querySelector(".error-message").innerHTML = "INVALID_ACTION";
-                booleanError = true;
-            } else if (data == "ACTION_IS_NOT_AN_OBJECT") {
-                document.querySelector(".error-message").innerHTML = "ACTION_IS_NOT_AN_OBJECT";
-                booleanError = true;
-            } else if (data == "NOT_ENOUGH_ENERGY") {
-                document.querySelector(".error-message").innerHTML = "NOT_ENOUGH_ENERGY";
-                booleanError = true;
-            } else if (data == "BOARD_IS_FULL") {
-                document.querySelector(".error-message").innerHTML = "BOARD_IS_FULL";
-                booleanError = true;
-            } else if (data == "CARD_NOT_IN_HAND") {
-                document.querySelector(".error-message").innerHTML = "CARD_NOT_IN_HAND";
-                booleanError = true;
-            } else if (data == "CARD_IS_SLEEPING") {
-                document.querySelector(".error-message").innerHTML = "CARD_IS_SLEEPING";
-                booleanError = true;
-            } else if (data == "MUST_ATTACK_TAUNT_FIRST") {
-                document.querySelector(".error-message").innerHTML = "MUST_ATTACK_TAUNT_FIRST";
-                booleanError = true;
-            } else if (data == "OPPONENT_CARD_NOT_FOUND") {
-                document.querySelector(".error-message").innerHTML = "OPPONENT_CARD_NOT_FOUND";
-                booleanError = true;
-            } else if (data == "OPPONENT_CARD_HAS_STEALTH") {
-                document.querySelector(".error-message").innerHTML = "OPPONENT_CARD_HAS_STEALTH";
-                booleanError = true;
-            } else if (data == "CARD_NOT_FOUND") {
-                document.querySelector(".error-message").innerHTML = "CARD_NOT_FOUND";
-                booleanError = true;
-            } else if (data == "ERROR_PROCESSING_ACTION") {
-                document.querySelector(".error-message").innerHTML = "ERROR_PROCESSING_ACTION";
-                booleanError = true;
-            } else if (data == "INTERNAL_ACTION_ERROR") {
-                document.querySelector(".error-message").innerHTML = "INTERNAL_ACTION_ERROR";
-                booleanError = true;
-            } else if (data == "HERO_POWER_ALREADY_USED") {
-                document.querySelector(".error-message").innerHTML = "HERO_POWER_ALREADY_USED";
-                booleanError = true;
-            }
-        }
-    }
-    return booleanError;
 }
 
 window.addEventListener("load", () => {

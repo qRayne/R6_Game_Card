@@ -32,7 +32,8 @@ $data = $action->execute();
         <img id="health-logo" src="images/health.jpg" alt="health-logo">
         <p id="nb-health"></p>
         <img id="recruit-logo" src="images/logo.png" alt="default image">
-        <!-- <p id="name-ennemy"></p> -->
+        <p id="name-ennemy"></p>
+        <p id="ennemy-description"></p>
         <img id="mp-logo" src="images/health.jpg" alt="mp-image">
         <p id="nb-mp"></p>
         <img id="nb-cartes" src="images/back-card-initial.jpg" alt="r6-nbCards">

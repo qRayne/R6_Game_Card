@@ -29,7 +29,7 @@ $data = $action->execute();
         <img src="images/back-card-initial.jpg" alt="r6-card">
         <img src="images/back-card-initial.jpg" alt="r6-card">
         <img src="images/back-card-initial.jpg" alt="r6-card">
-        <img id="health-logo" src="images/health.jpg" alt="health-logo">
+        <img id="health-logo" src="images/hearth.png" alt="health-logo">
         <p id="nb-health"></p>
         <img id="recruit-logo" src="images/logo.png" alt="default image">
         <p id="name-ennemy"></p>
@@ -53,7 +53,7 @@ $data = $action->execute();
 
     <div class="details-game">
         <p id="nb-healthMe"></p>
-        <img id="health-logoMe" src="images/health.jpg" alt="mp-image"><br>
+        <img id="health-logoMe" src="images/hearth.png" alt="mp-image"><br>
         <p id="nb-mpMe"></p>
         <img id="mp-logoMe" src="images/health.jpg" alt="mp-image"><br>
         <p id="nb-cartes-textMe"></p>

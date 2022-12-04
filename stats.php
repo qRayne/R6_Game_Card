@@ -20,7 +20,7 @@ $data = $action->execute();
 
 <body class="staticBackground2">
     <form action="" method="POST">
-        <input id="deleteButton" type="submit" name="delete" value="DELETE">
+        <input id="deleteButton" type="submit" name="delete" value="CLEAR">
 
     <div class="stats">
         <?php

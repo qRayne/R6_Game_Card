@@ -11,7 +11,6 @@ const state = () => {
         .then(data => {
             checkGameState(data);
             dataGame = data;
-            console.log(data);
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
 }

@@ -19,19 +19,8 @@ $data = $action->execute();
 </head>
 
 <body class="background">
-
-    <div class="dropdown">
-        <button onclick="dropdownMenu()" class="dropbtn">≡</button>
-        <div id="myDropdown" class="dropdown-content">
-            <a id="nokk">Nokk</a>
-            <a id="lion">Lion</a>
-            <a id="glaz">Glaz</a>
-            <a id="maverick">Maverick</a>
-            <a id="vigil">Vigil</a>
-            <a id="ashe">Ashe</a>
-        </div>
-    </div>
-
+    <img id="flameLeftEye" src="images/flame.gif" alt="">
+    <img id="flameRightEye" src="images/flame.gif" alt="">
     <div class="form-style-6">
         <form class="loginForm" action="" method="post">
             <?php

@@ -32,7 +32,7 @@ $data = $action->execute();
                 foreach ($data["countTotal"] as $key => $value2) {
                 }
                 ?>
-                <div><?= ($value["count"] / $value2["count"]) * 100 ?> % </div>
+                <div><?= round(($value["count"] / $value2["count"]) * 100,2) ?> % </div>
         <?php
             }
         }

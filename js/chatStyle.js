@@ -4,7 +4,7 @@ const applyStyles = iframe => {
         fontGoogleName: "Inter Tight",
         fontSize: "15px",
         inputBackgroundColor: "transparent",
-        inputFontColor: "#40E0D0",
+        inputFontColor: "white",
         height: "700px",
         memberListFontColor: "#40E0D0",
         memberListBackgroundColor: "transparent"

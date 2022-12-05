@@ -3,6 +3,7 @@ import Cartes from "./Cartes.js";
 let dataGame = null;
 let booleanError = false;
 
+// mon ajax pour get le state de la partie
 const state = () => {
     fetch("ajax-game.php", { // Il faut créer cette page et son contrôleur appelle
             method: "POST" // l’API (games/state)
@@ -15,7 +16,8 @@ const state = () => {
         })
 }
 
-// Pour l'action de end_turn, surrender et hero_power
+// mon ajax pour faire des actions dans la partie
+// prend en paramètre l'action(PLAY,ATTACK), l'uid (mon uid) et l'uid de l'ennemie (targetUid)
 const statePlay = (action, uid, targetuid) => {
     let data = new FormData();
 
@@ -49,6 +51,9 @@ const statePlay = (action, uid, targetuid) => {
         })
 };
 
+
+// mon ajax permettant d'inscrire une carte dans la base de donnée
+// j'inscrit la carte seulement lorsqu'elle est en mode play, pas attack
 const addCardsDatabase = (id) => {
     let data = new FormData();
 
@@ -60,6 +65,7 @@ const addCardsDatabase = (id) => {
     });
 }
 
+// quand j'apelle gameState, je verifie si le joueur attend ou lance une partie
 const checkGameState = (data) => {
 
     if (data != null) {
@@ -74,8 +80,7 @@ const checkGameState = (data) => {
     }
 }
 
-
-// il faut attaquer aussi le perso en cliquant sur le logo image
+// fonction qui permet de créer les cartes (supprime et remet des cartes)
 const modifiyGameState = (data) => {
 
     if (data != null) {
@@ -122,6 +127,7 @@ const modifiyGameState = (data) => {
     }
 }
 
+// fonction qui check à chaque fois qu'on fait une action si le joueur n'est pas rendu à  la fin de partie
 const endingGame = (result) => {
     if (result == "LAST_GAME_WON")
         document.querySelector(".error-message").innerHTML = "U WON THE GAME";
@@ -131,6 +137,7 @@ const endingGame = (result) => {
     setTimeout(function() { location.href = "chat.php" }, 4000);
 }
 
+// fonction qui permet de mettre une carte dans le board
 const putCardInBoard = (uid) => {
     if (typeof uid == "number") {
         if (dataGame["yourTurn"] == true) {
@@ -148,6 +155,7 @@ const putCardInBoard = (uid) => {
     }
 }
 
+// fonction qui permet d'attaquer une carte, targetUid ou 0 pour le hero ennemie 
 const attackCard = (uid, targetuid) => {
     if (typeof uid == "number") {
         if (dataGame["yourTurn"] == true) {
